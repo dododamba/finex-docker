@@ -1,0 +1,120 @@
+<div class="dashboard-box margin-top-0 ">
+    <div class="headline">
+        <p class="text-danger">Les champs marqués par un ( <i class="text-danger glyphicon glyphicon-asterisk"></i>)
+            sont obligatoires !</p>
+
+        <div class="dashboard-headline">
+            <h4 class="wither"><i class="sl sl-icon-doc"></i> Enregistrement <a class="button pull-right"
+                                                                                routerLink='/taches/list'><i
+                    class="fa fa-list"></i> Liste </a></h4>
+
+        </div>
+    </div>
+    <!-- Nav tabs -->
+    <div>
+
+        <!-- Tab panes -->
+        <form (ngSubmit)="submit()" [formGroup]="fGroup" enctype="multipart/form-data">
+            <div class="content with-padding padding-bottom-10">
+                <div class="jumbotron">
+                    <div class="submit-field">
+
+                        <div class="col-xl-12">
+                            <label>Nom <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input class="search-field" formControlName="nom" placeholder="ex : Achat des materiel"
+                                   type="text">
+
+                            <div *ngIf="fGroup.controls['nom'].invalid && (fGroup.controls['nom'].dirty || fGroup.controls['nom'].touched)">
+                                <div *ngIf="fGroup.controls['nom'].errors.required">
+                                    <p class="text-danger">Entrez le libelle du projet !</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <label>Date debut <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                <input (onChange)="date = $event" [dpDayPicker]="datePickerConfig"
+                                       [theme]="'dp-material'"
+                                       formControlName="dateDebut"/>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Date Fin <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                <input (onChange)="date = $event" [dpDayPicker]="datePickerConfig"
+                                       [theme]="'dp-material'"
+                                       formControlName="dateFin"/>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="submit-field">
+
+                        <div class="col-xl-12">
+                            <label>Cout <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input class="search-field" formControlName="cout" placeholder="ex : 2 000 000" type="text">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="submit-field">
+
+                        <div class="col-xl-12">
+                            <label>Description</label>
+                            <textarea class="WYSIWYG" cols="40" formControlName="description" id="summary" name="summary" rows="3"
+                                      spellcheck="true"> </textarea>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="submit-field">
+
+                        <!-- City -->
+                        <div class="col-xl-12">
+                            <label>Groupe de travail </label>
+                            <select class="chosen-select-no-single" formControlName="groupeSlug">
+                                <option disabled>Selectioner un groupe de travail</option>
+                                <option *ngFor="let item of groupes" value="{{item.id}}"> {{ item.nom }}
+                                    &nbsp; <p class="text-danger">{{item.projet.nom}}</p></option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <button class="button ripple-effect big margin-top-30" style="background: #139469;color: #fff"
+                                type="submit">Enregistrer <i
+                                class="fa fa-save"></i></button> &nbsp;
+
+                        <button class="button ripple-effect big margin-top-30" href="#"> Liste</button>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+
+
+    </div>
+
+
+</div>
+

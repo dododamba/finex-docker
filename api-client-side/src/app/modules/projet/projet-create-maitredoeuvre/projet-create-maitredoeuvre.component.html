@@ -1,0 +1,221 @@
+<div class="dashboard-box margin-top-0 ">
+    <div class="headline">
+        <p class="text-danger">Les champs marqués par un ( <i class="text-danger glyphicon glyphicon-asterisk"></i>)
+            sont obligatoires !</p>
+
+        <div class="dashboard-headline">
+            <h4 class="wither"><i class="sl sl-icon-doc"></i> <strong class="text-success">Ajout prestaire 
+                projet : {{projet.nom}}</strong> <a class="button pull-right" routerLink='/projets/maitredoeuvre/{{slug}}'><i
+                    class="fa fa-list"></i> Liste </a></h4>
+
+        </div>
+    </div>
+    <!-- Nav tabs -->
+    <div>
+
+        
+        <!-- Tab panes -->
+        <form (ngSubmit)="create()" [formGroup]="fGroup" enctype="multipart/form-data">
+            <div class="content with-padding padding-bottom-10">
+                <div class="jumbotron">
+                    <div class="submit-field">
+
+                        <div class="col-xl-12">
+                            <label>Nom <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input class="search-field" formControlName="nom" placeholder="" type="text">
+
+                            <div *ngIf="fGroup.controls['nom'].invalid && (fGroup.controls['nom'].dirty || fGroup.controls['nom'].touched)">
+                                <div *ngIf="fGroup.controls['nom'].errors.required">
+                                    <p class="text-danger">Entrez le nom de l'entreprise !</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <label>N° ID Fiscal <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                <input
+                                        formControlName="numeroIdFiscal"
+                                />
+
+                                <div *ngIf="fGroup.controls['numeroIdFiscal'].invalid && (fGroup.controls['numeroIdFiscal'].dirty || fGroup.controls['numeroIdFiscal'].touched)">
+                                    <div *ngIf="fGroup.controls['numeroIdFiscal'].errors.required">
+                                        <p class="text-danger">Entrez le numero d'identification fiscale de l'entreprise
+                                            !</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Raison Social <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                <input
+                                        formControlName="raisonSociale"
+                                />
+                                <div *ngIf="fGroup.controls['raisonSociale'].invalid && (fGroup.controls['raisonSociale'].dirty || fGroup.controls['raisonSociale'].touched)">
+                                    <div *ngIf="fGroup.controls['raisonSociale'].errors.required">
+                                        <p class="text-danger">Entrez la raison sociale de l'entreprise !</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="submit-field">
+
+                        <div class="col-xl-12">
+                            <label>Nom et Prénom du Responsable <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input class="search-field" formControlName="responsable" placeholder="" type="text">
+                            <div *ngIf="fGroup.controls['responsable'].invalid && (fGroup.controls['responsable'].dirty || fGroup.controls['responsable'].touched)">
+                                <div *ngIf="fGroup.controls['responsable'].errors.required">
+                                    <p class="text-danger">Entrez le Nom et le Prénom du Responsable de l'entreprise
+                                        !</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <fieldset>
+                        <legend>Informations Banquaires</legend>
+
+                        <div class="col-md-12">
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <label>Nom de la Banque <i
+                                            class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                    <input
+                                            formControlName="nomBanque"
+                                    />
+
+                                    <div *ngIf="fGroup.controls['nomBanque'].invalid && (fGroup.controls['nomBanque'].dirty || fGroup.controls['nomBanque'].touched)">
+                                        <div *ngIf="fGroup.controls['nomBanque'].errors.required">
+                                            <p class="text-danger">Entrez le Nom de la Banque de l'entreprise !</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>N° de Compte <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                    <input
+                                            formControlName="numeroCompte"
+                                    />
+
+                                    <div *ngIf="fGroup.controls['numeroCompte'].invalid && (fGroup.controls['numeroCompte'].dirty || fGroup.controls['numeroCompte'].touched)">
+                                        <div *ngIf="fGroup.controls['numeroCompte'].errors.required">
+                                            <p class="text-danger">Entrez le N° de Compte de l'entreprise !</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <label>Code Swift <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                    <input
+                                            formControlName="codeSwift"
+                                    />
+                                    <div *ngIf="fGroup.controls['codeSwift'].invalid && (fGroup.controls['codeSwift'].dirty || fGroup.controls['codeSwift'].touched)">
+                                        <div *ngIf="fGroup.controls['codeSwift'].errors.required">
+                                            <p class="text-danger">Entrez le Code Swift de l'entreprise !</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <label>Adresse de la Banque</label>
+                                    <textarea class="WYSIWYG" cols="40" formControlName="adresseBanque" id="summary" name="summary"
+                                              rows="3" spellcheck="true"> </textarea>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label>Information sur la banque</label>
+                                    <textarea class="WYSIWYG" cols="40" formControlName="information" id="summary" name="summary"
+                                              rows="3" spellcheck="true"> </textarea>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+
+
+                    <div class="submit-field">
+
+                        <div class="col-xl-12">
+                           <div class="row">
+                                <div class="col-xl-6">
+                                    <label>Description de l'entreprise</label>
+                                    <textarea class="WYSIWYG" cols="40" formControlName="description" id="summary" name="summary" rows="3"
+                                              spellcheck="true"> </textarea>        
+                                </div>
+
+                                <div class="col-xl-6">
+                                    <label>Adresse de l'entreprise</label>
+                                    <textarea class="WYSIWYG" cols="40" formControlName="adresse" id="summary" name="summary" rows="3"
+                                              spellcheck="true"> </textarea>        
+                                </div>
+                           </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div>
+
+                        <button class="button ripple-effect big margin-top-30" style="background: #139469;color: #fff"
+                                type="submit">Enregistrer <i
+                                class="fa fa-save"></i></button> &nbsp;
+
+                        <button class="button ripple-effect big margin-top-30" href="#"> Liste</button>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+

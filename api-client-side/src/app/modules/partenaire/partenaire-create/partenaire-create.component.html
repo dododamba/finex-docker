@@ -1,0 +1,59 @@
+<div class="content with-padding padding-bottom-10">
+    <form (ngSubmit)="create(fGroup.value)" [formGroup]="fGroup">
+
+        <!-- Section -->
+        <div class="add-listing-section">
+
+            <!-- Headline -->
+            <div class="add-listing-headline">
+                <h4 class="wither"><i class="sl sl-icon-doc"></i> Enregistrement <a class="button pull-right"
+                                                                                    routerLink='/partenaire/list'><i
+                        class="fa fa-list"></i> List </a></h4>
+
+            </div>
+
+            <br> <br> 
+            <!-- Title -->
+           
+            <div class="jumbotron">
+                <div class="row with-forms">
+                    <div class="col-md-12">
+                        <label>Nom <strong class="text-danger">(*)</strong> </label>
+                        <input class="search-field" formControlName="nom" type="text">
+                    </div>
+    
+                    <div *ngIf="fGroup.controls['nom'].invalid && (fGroup.controls['nom'].dirty || fGroup.controls['nom'].touched)">
+                        <div *ngIf="fGroup.controls['nom'].errors.required">
+                            <p class="text-danger">Entrez le nom du Partenaire</p>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="row with-forms">
+                    <div class="col-md-12">
+                        <label>Type Partenaire <strong class="text-danger">(*)</strong> </label>
+                        <select class="chosen-select-no-single" formControlName="typePartenaire">
+                            <option *ngFor="let item of typePartenaires" value="{{ item.slug }}">{{ item.libelle }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12">
+            <div *ngIf="!fGroup.invalid" class="comment-btn">
+                <button class="button preview" href="#" type="submit">Enregistrer</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!-- Row / End -->
+<!-- Section / End -->
+
+
+
+
+

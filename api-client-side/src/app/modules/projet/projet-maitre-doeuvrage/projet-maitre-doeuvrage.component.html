@@ -1,0 +1,41 @@
+<div class="col-lg-12 col-md-12 col-xs-12">
+
+
+    <div>
+        <div class="dashboard-list-box">
+            <div class="headline"><i class="fa fa-list"></i> <strong class="text-success">Les Maitre d'oeuvres du projet
+                : {{projet.nom}}</strong> <a class="button pull-right" routerLink='/etapes/create'><i
+                    class="fa fa-plus"></i> Ajouter </a></div>
+            <div class="table-box">
+                <table class="basic-table booking-table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of etapes">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.nom }}</td>
+                        <td>{{ item.description | slice:0:35 }}</td>
+
+                        <td class="btn-group">
+                            <button (click)="show(item.slug)" class="btn btn-xs btn-info"><i
+                                    class="icon-feather-eye"></i></button>&nbsp;
+                            <button (click)="edit(item.slug)" class="btn btn-xs btn-warning"><i
+                                    class="icon-line-awesome-edit"></i></button>&nbsp;
+                            <button (click)="delete(item.slug)" class="btn btn-xs btn-danger"><i
+                                    class="icon-feather-trash"></i></button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

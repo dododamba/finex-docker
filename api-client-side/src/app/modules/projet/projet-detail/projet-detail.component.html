@@ -1,0 +1,407 @@
+<div id="">
+
+    <div class="headline">
+        <h2> Detail du projet {{ projet.nom }}  <a class="button pull-right"
+                                                                     routerLink='/projets/my-project'><i
+                class="fa fa-list"></i> Liste </a></h2>
+    </div>
+
+    <div>
+        <div>
+            <table class="col-md-12">
+                <tbody>
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Nom du Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>N° du Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.numeroProjet }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Etat : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{projet.etat}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Secteur du Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.secteur.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Type de Marché : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.typeMarche.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+               
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Date De Debut : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.dateDebut }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Date butoire : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{projet.dateFin}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Budget Prévisionnel : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{projet.budgetPrevisionel}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Buget Réel : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{projet.budgetReel}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr *ngIf="projet.responsable">
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Responsable du Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong> {{projet.responsable.nom }} &nbsp; {{projet.responsable.prenom }} </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Caracteristiques techniques : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button  class="button" type="button">Voir
+                                        ({{ projet.catarteristiqueTechniques.length }} )
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Maitre d'oeuvrage : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong> {{ projet.maitreDouvrage[0].nom }} </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Maitre d'eouvre : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.maitreDoeuvre.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Maitre d'oeuvre délégué : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.maitreDoeuvreDelegue.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Régions : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong *ngFor="let item of projet.regions">{{ item.nom }} &nbsp; ,</strong> 
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+
+                
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Controleurs : </p>
+                                </div>
+
+                                <div class="col-md-4" *ngIf="projet.projetControlleur">
+                                    <strong>{{projet.projetControlleur.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Etapes : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button (click)="goTOEtapes(projet.slug)" class="button" type="button">Voir
+                                        ({{projet.etapes.length }} )
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Partenaires : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button (click)="goTOPartenaire(projet.slug)" class="button" type="button">Voir
+                                        ({{projet.partenaires.length }} )
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Entreprise chargé d'execution du projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button (click)="goTOEnterprise(projet.slug)" class="button" type="button">Voir
+                                        ({{projet.entreprises.length }} )
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr *ngIf="financements">
+                    <td class="col-xl-12"> Financements Disponible : &nbsp; {{financements.length }}</td>
+                    <td class="col-xl-4">
+                        <button class="button" type="button">Voir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Controle : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button class="button" type="button" (click)="goToControle(projet.slug)">Voir
+                                        ({{projet.controles.length }} )
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr></tr>
+                <br>
+                <br>
+                </tbody>
+            </table>
+            <div>
+                <div class="form-title form-title-1">
+                    &nbsp; &nbsp; <p><strong>Objet du Projet</strong></p>
+                </div>
+                <div class="container jumbotron  scroll">
+                    <p>
+                        {{projet.description}}
+                    </p>
+                </div>
+              
+
+            </div>
+
+            <button (click)="gotToEdit(projet.slug)" class="button button-sliding-icon ripple-effect  ">Mettre à
+                jours
+            </button> &nbsp; &nbsp;
+            <button (click)="goTOFinance(projet.slug)" class="button button-sliding-icon ripple-effect ">Bilan
+                Financier
+            </button> &nbsp; &nbsp;
+           <!--
+                <button (click)="goToRealisation(projet.slug)" class="button button-sliding-icon ripple-effect  ">
+                Réalisations
+            </button> &nbsp; &nbsp;
+             <button (click)="goToStat(projet.slug)" class="button button-sliding-icon ripple-effect  ">
+                Statistiques
+            </button> &nbsp; &nbsp;
+           -->
+           
+        </div>
+    </div>
+
+</div>
+<router-outlet></router-outlet>

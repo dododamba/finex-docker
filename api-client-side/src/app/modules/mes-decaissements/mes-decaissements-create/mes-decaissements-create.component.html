@@ -1,0 +1,738 @@
+<div class="dashboard-box margin-top-0">
+
+    <!-- Headline -->
+    <div class="headline">
+        <h3><i class="icon-feather-folder-plus"></i> Demande de decaissement </h3>
+    </div>
+
+  
+
+    <form (ngSubmit)="submit()" [formGroup]="fGroup" enctype="multipart/form-data">
+
+       
+
+        <div class="content with-padding padding-bottom-10" *ngIf="view.form">
+          
+
+            <div class="jumbotron">
+                <div class="col-md-12">
+                    <div class="row">
+                         <div class="col-md-6">
+                             <div class="submit-field">
+                                 <h5>Projet</h5>
+                                 <select (change)="onProjectSelected($event.target.value)" >
+                                     <option disabled>Selectionnez un projet</option>
+                                     <option value="{{item.slug}}" *ngFor="let item of projets">{{ item.nom }}</option>
+                                 </select>
+                             </div>
+                         </div>
+                         <div class="col-md-6">
+                            <div class="submit-field">
+                                <h5>Entreprises</h5>
+                                <select  (change)="onEntrepresiseSelected($event.target.value)">
+                                    <option disabled>Selectionnez une entreprise</option>
+                                    <option value="{{item.slug}}" *ngFor="let item of entreprises" >{{ item.nom }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md-12" *ngIf="financements">
+                    <div class="row">
+                         <div class="col-md-6">
+                             <div class="submit-field">
+                                 <h5>Financements</h5>
+                                 <select (change)="getFinancement($event.target.value)" >
+                                     <option disabled>Selectionnez un projet</option>
+                                     <option value="{{item.slug}}" *ngFor="let item of  financements">{{ item.libelle }}</option>
+                                 </select>
+                             </div>
+                         </div>
+                         <div class="col-md-6">
+                            <div class="submit-field">
+                                <h5>Partenaire</h5>
+                                <select  (change)="onEntrepresiseSelected($event.target.value)">
+                                    <option disabled>Selectionnez une entreprise</option>
+                                    <option  *ngFor="let item of partenaires" >{{ item.nom }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+
+
+            <div class="row">
+    
+                <div class="col-md-12">
+                    <div class="jumbotron">
+    
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="submit-field">
+                                    <h5>Montant</h5>
+                                    <input class="with-border" placeholder="Entrez le montant ex: 2 000 000 000"
+                                           type="text" formControlName="montant">
+                                </div>
+    
+                            </div>
+    
+                            <div class="col-md-4">
+                                <div class="submit-field">
+                                    <h5>Devise</h5>
+                                    <div class="">
+                                        <select  formControlName="devise">
+                                            <option value="cfa">CFA</option>
+                                            <option value="euro">Euro</option>
+                                            <option value="dollar">Dollar</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="submit-field">
+                            <h5>Methode de decaissement </h5>
+                            <select  formControlName="methode">
+                                <option disabled>Selectioner</option>
+                                <option value="virement">Virement banquaire</option>
+                                <option value="cheque">Chèque</option>
+                                <option value="cach">Cache</option>
+                            </select>
+    
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div class="col-md-12" *ngIf="display">
+                    <div class="jumbotron">
+    
+                        <legend>Information Sur l'entreprise</legend>
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="submit-field">
+                                    <h5>Nom de l'entreprise</h5>
+                                    <input class="with-border" value="{{entreprise.nom}}" type="text" disabled>
+                                </div>
+                            </div>
+    
+                            <div class="col-xl-4">
+                                <div class="submit-field">
+                                    <h5>Nom du responsable</h5>
+                                    <input class="with-border" value="{{entreprise.responsable}}" type="text"  disabled>
+                                </div>
+                            </div>
+    
+                            <div class="col-xl-4">
+                                <div class="submit-field">
+                                    <h5>Raison Social</h5>
+                                    <input class="with-border" value="{{entreprise.raisonSociale}}" type="text" disabled>
+                                </div>
+                            </div>
+                        </div>
+    
+    
+    
+                        <legend>Information Bancaire</legend>
+                        <div class="row">
+                            <div class="col-xl-4">
+                                <div class="submit-field">
+                                    <h5>Nom de la banque</h5>
+                                    <input class="with-border" value="{{entreprise.banquaire.nomBanque}}" type="text" disabled>
+                                </div>
+                            </div>
+    
+                            <div class="col-xl-4">
+                                <div class="submit-field">
+                                    <h5>Compte N° </h5>
+                                    <input class="with-border" value="{{entreprise.banquaire.numeroCompte}}" type="text" disabled>
+                                </div>
+                            </div>
+    
+                            <div class="col-xl-4">
+                                <div class="submit-field">
+                                    <h5>Code Swift</h5>
+                                    <input class="with-border" value="{{entreprise.banquaire.codeSwift}}" type="text" disabled>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="submit-field">
+                                        <h5>Information de la banque</h5>
+                                        <textarea class="with-border" cols="30" rows="5" disabled>{{entreprise.banquaire.information}}</textarea>
+                                    </div>
+                                </div>
+    
+                                <div class="col-xl-6">
+                                    <div class="submit-field">
+                                        <h5>Adresse de la banque</h5>
+                                        <textarea class="with-border" cols="30" rows="5" disabled>{{entreprise.banquaire.adresse}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div class="col-xl-12">
+                    <div class="submit-field">
+                        <h5>Note supplementaire</h5>
+                        <textarea class="with-border" cols="30" rows="5" formControlName="note"></textarea>
+    
+                        <div class="row">
+                            <div class="uploadButton margin-top-30">
+                                <input accept="image/*, application/pdf" class="uploadButton-input"  multiple=""
+                                       type="file" formControlName="fichier">
+                                <label class="uploadButton-button ripple-effect" for="upload">Ajouter un fichier </label>
+                                <span class="uploadButton-file-name">Fichier ou rapport de controle</span>
+                            </div>
+    
+                            <div class="uploadButton margin-top-30">
+                                <input accept="image/*, application/pdf" class="uploadButton-input"  multiple=""
+                                       type="file" formControlName="fichiersup">
+                                <label class="uploadButton-button ripple-effect" for="upload">Ajouter un fichier </label>
+                                <span class="uploadButton-file-name">Fichiers supplementaires</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <br>
+                <br>
+    
+                <div class="row">
+                    &nbsp; &nbsp; <button class="button" (click)="showForm(1)">Aperçu</button> 
+    
+                </div>
+            </div>
+        </div>
+
+   <div *ngIf="view.preview">
+      <div class="jumbotron">
+        <table class="col-md-12" *ngIf="projet">
+            <tbody>
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Nom du Projet : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong>{{ projet.nom }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>N° du Projet : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong>{{ projet.numeroProjet }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Etat : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong>{{projet.etat}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Secteur du Projet : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong>{{ projet.secteur.nom }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Type de Marché : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong>{{ projet.typeMarche.nom }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Regions : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong>{{ projet.secteur.nom }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Date De Debut : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong>{{ projet.dateDebut }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Date butoire : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong>{{projet.dateFin}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Budget Prévisionnel : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong>{{projet.budgetPrevisionel}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Buget Réel : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong>{{projet.budgetReel}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr *ngIf="projet.responsable">
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p> Responsable du Projet : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong> {{projet.responsable.nom }} &nbsp; {{projet.responsable.prenom }} </strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Maitre d'oeuvrage : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong> {{ projet.maitreDouvrage[0].nom }} </strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Maitre d'eouvre : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong>{{ projet.maitreDoeuvre.nom }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Maitre d'oeuvre délégué : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong>{{ projet.maitreDoeuvreDelegue.nom }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p> Régions : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <strong *ngFor="let item of projet.regions">{{ item.nom }} &nbsp; ,</strong> 
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+
+            
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p> Controlleurs : </p>
+                            </div>
+
+                            <div class="col-md-4" *ngIf="projet.projetControlleur">
+                                <strong>{{projet.projetControlleur.nom }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr *ngIf="projet.catarteristiqueTechniques">
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p> Caracteristiques techniques : </p>
+                            </div>
+
+                            <div class="col-md-4" *ngFor="let item of projet.catarteristiqueTechniques">
+                                <button  class="button big gray ripple-effect-dark" type="button">{{item.libelle}} : {{item.valeur}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+
+           
+
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p> Partenaires : </p>
+                            </div>
+
+                            <div class="col-md-4"  *ngFor="let item of projet.partenaires">
+                                <button (click)="goTOPartenaire(projet.slug)" class="button" type="button">Voir
+                                   
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p> Entreprise chargé d'execution du projet : </p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <button (click)="goTOEnterprise(projet.slug)" class="button" type="button">Voir
+                                    ({{projet.entreprises.length }} )
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <br>
+
+            </tbody>
+        </table>
+
+
+      <div >
+        <table>
+
+        </table>
+      </div>
+
+        <div *ngIf="projet.etapes">
+            <table class="col-md-12" >
+
+                <h3> <u>Etapes : </u> </h3> <br><br>
+              <tbody>
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row" *ngFor="let item of projet.etapes">
+                                <div class="col-md-8">
+                                    <p>{{item.nom}} : </p>
+                                </div>
+    
+                                <div class="col-md-4" *ngIf="item.taches">
+                                    <strong>{{ projet.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+    
+              </tbody>
+            </table>
+        </div>
+
+        <div *ngIf="financement">
+            <table class="col-md-12" >
+
+                <h3> <u>Financements : </u> </h3> <br><br>
+              <tbody>
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Libellé : </p> 
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <p>{{financement.libelle}}</p> 
+                                </div>
+
+
+                                <div class="col-md-8">
+                                    <p>Montant du financement : </p> 
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <p>{{financement.montantTotal}}</p> 
+                                </div>
+
+
+                                <div class="col-md-8">
+                                    <p>Montant encaissé : </p> 
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <p>{{financement.montantEncaisse}}</p> 
+                                </div>
+
+
+
+                                <div class="col-md-8">
+                                    <p>Montant restant : </p> 
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <p>{{financement.montantRestant}}</p> 
+                                </div>
+
+
+                                <div class="col-md-8">
+                                    <p>Type de  financement : </p> 
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <p>{{financement.typeFinancement.libelle}}</p> 
+                                </div>
+
+
+                                <div class="col-md-8">
+                                    <p>Type de  financement : </p> 
+                                </div>
+    
+                                <div class="col-md-4">
+                                    <p>{{financement.typeFinancement.libelle}}</p> 
+                                </div>
+
+
+                                <div class="col-md-8">
+                                    <p>Partenaire : </p> 
+                                </div>
+    
+                                <div class="col-md-4" >
+                                    <p>{{financement.partenaires[0].nom}}</p> 
+                                </div>
+                                
+
+                                <div class="col-md-8">
+                                    <p>Type de Partenaire : </p> 
+                                </div>
+    
+                                <div class="col-md-4" >
+                                    <p>{{financement.partenaires[0].typePartenaire.libelle}}</p> 
+                                </div>
+                                
+
+
+
+                                <div *ngIf="financement.encaissements">
+                                    <h3> <u>Anciens decaissements : </u> </h3> <br><br>
+
+                                    
+
+                                        <div class="col-xl-12" *ngFor="let item of financement.encaissements">
+
+                                            <div class="col-xl-8">
+                                                <p>Montant : </p> 
+                                            </div>
+                
+                                            <div class="col-xl-4" >
+                                                <p>{{item.montant}}</p> 
+                                            </div>
+
+
+                                            <div class="col-xl-8">
+                                                <p>Montant : </p> 
+                                            </div>
+                
+                                            <div class="col-xl-4" >
+                                                <p>{{item.dateEncaissement}}</p> 
+                                            </div>
+
+
+                                            <div class="col-xl-8">
+                                                <p>Banque : </p> 
+                                            </div>
+                
+                                            <div class="col-xl-4" >
+                                                <p>{{item.banque}}</p> 
+                                            </div>
+                                
+                                            
+                                        </div>
+
+
+
+
+                                </div>
+
+                                
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+    
+              </tbody>
+            </table>
+        </div>
+       
+      </div>
+      <div class="row">
+        &nbsp; &nbsp;  &nbsp; &nbsp; <button class="button"  (click)="showForm(0)">Formulaire</button>&nbsp; &nbsp;
+        &nbsp;<button class="button" (click)="imprimer()">Imprimer</button>&nbsp; &nbsp;
+         <button class="button" type="submit">Envoyer la demande</button> 
+
+    </div>
+   </div>
+
+</form>
+
+</div>

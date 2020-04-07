@@ -1,0 +1,168 @@
+<div class="col-xl-12">
+    <div class="dashboard-box margin-top-0">
+
+        <!-- Headline -->
+        <div class="headline">
+            <h3><i class="icon-feather-folder-plus"></i> Task Submission Form</h3>
+        </div>
+
+        <div class="content with-padding padding-bottom-10">
+            <div class="row">
+
+                <div class="col-xl-4">
+                    <div class="submit-field">
+                        <h5>Project Name</h5>
+                        <input class="with-border" placeholder="e.g. build me a website" type="text">
+                    </div>
+                </div>
+
+                <div class="col-xl-4">
+                    <div class="submit-field">
+                        <h5>Category</h5>
+                        <div class="btn-group bootstrap-select with-border">
+                            <button class="btn dropdown-toggle bs-placeholder btn-default" data-toggle="dropdown"
+                                    role="button" title="Select Category" type="button"><span
+                                    class="filter-option pull-left">Select Category</span>&nbsp;<span
+                                    class="bs-caret"><span class="caret"></span></span></button>
+                            <div class="dropdown-menu open" role="combobox">
+                                <ul aria-expanded="false" class="dropdown-menu inner" role="listbox">
+                                    <li data-original-index="1"><a aria-disabled="false" aria-selected="false" class=""
+                                                                   data-tokens="null" role="option"
+                                                                   tabindex="0"><span class="text">Admin Support</span><span
+                                            class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    <li data-original-index="2"><a aria-disabled="false" aria-selected="false" class=""
+                                                                   data-tokens="null" role="option"
+                                                                   tabindex="0"><span class="text">Customer Service</span><span
+                                            class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    <li data-original-index="3"><a aria-disabled="false" aria-selected="false" class=""
+                                                                   data-tokens="null" role="option"
+                                                                   tabindex="0"><span class="text">Data Analytics</span><span
+                                            class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    <li data-original-index="4"><a aria-disabled="false" aria-selected="false" class=""
+                                                                   data-tokens="null" role="option"
+                                                                   tabindex="0"><span class="text">Design &amp; Creative</span><span
+                                            class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    <li data-original-index="5"><a aria-disabled="false" aria-selected="false" class=""
+                                                                   data-tokens="null" role="option"
+                                                                   tabindex="0"><span class="text">Legal</span><span
+                                            class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    <li data-original-index="6"><a aria-disabled="false" aria-selected="false" class=""
+                                                                   data-tokens="null" role="option"
+                                                                   tabindex="0"><span class="text">Software Developing</span><span
+                                            class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    <li data-original-index="7"><a aria-disabled="false" aria-selected="false" class=""
+                                                                   data-tokens="null" role="option"
+                                                                   tabindex="0"><span class="text">IT &amp; Networking</span><span
+                                            class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    <li data-original-index="8"><a aria-disabled="false" aria-selected="false" class=""
+                                                                   data-tokens="null" role="option"
+                                                                   tabindex="0"><span
+                                            class="text">Writing</span><span
+                                            class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    <li data-original-index="9"><a aria-disabled="false" aria-selected="false" class=""
+                                                                   data-tokens="null" role="option"
+                                                                   tabindex="0"><span
+                                            class="text">Translation</span><span
+                                            class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                    <li data-original-index="10"><a aria-disabled="false" aria-selected="false" class=""
+                                                                    data-tokens="null" role="option"
+                                                                    tabindex="0"><span class="text">Sales &amp; Marketing</span><span
+                                            class="glyphicon glyphicon-ok check-mark"></span></a></li>
+                                </ul>
+                            </div>
+                            <select class="selectpicker with-border" data-size="7" tabindex="-98"
+                                    title="Select Category">
+                                <option class="bs-title-option" value="">Select Category</option>
+                                <option>Admin Support</option>
+                                <option>Customer Service</option>
+                                <option>Data Analytics</option>
+                                <option>Design &amp; Creative</option>
+                                <option>Legal</option>
+                                <option>Software Developing</option>
+                                <option>IT &amp; Networking</option>
+                                <option>Writing</option>
+                                <option>Translation</option>
+                                <option>Sales &amp; Marketing</option>
+                            </select></div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4">
+                    <div class="submit-field">
+                        <h5>Location <i class="help-icon" data-original-title="Leave blank if it's an online job" data-tippy=""
+                                        data-tippy-placement="right"></i></h5>
+                        <div class="input-with-icon">
+                            <div id="autocomplete-container">
+                                <input class="with-border" id="autocomplete-input" placeholder="Anywhere" type="text">
+                            </div>
+                            <i class="icon-material-outline-location-on"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="submit-field">
+                        <h5>What is your estimated budget?</h5>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="input-with-icon">
+                                    <input class="with-border" placeholder="Minimum" type="text">
+                                    <i class="currency">USD</i>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="input-with-icon">
+                                    <input class="with-border" placeholder="Maximum" type="text">
+                                    <i class="currency">USD</i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feedback-yes-no margin-top-0">
+                            <div class="radio">
+                                <input checked="" id="radio-1" name="radio" type="radio">
+                                <label for="radio-1"><span class="radio-label"></span> Fixed Price Project</label>
+                            </div>
+
+                            <div class="radio">
+                                <input id="radio-2" name="radio" type="radio">
+                                <label for="radio-2"><span class="radio-label"></span> Hourly Project</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6">
+                    <div class="submit-field">
+                        <h5>What skills are required? <i class="help-icon" data-original-title="Up to 5 skills that best describe your project" data-tippy=""
+                                                         data-tippy-placement="right"></i>
+                        </h5>
+                        <div class="keywords-container">
+                            <div class="keyword-input-container">
+                                <input class="keyword-input with-border" placeholder="Add Skills" type="text">
+                                <button class="keyword-input-button ripple-effect"><i
+                                        class="icon-material-outline-add"></i></button>
+                            </div>
+                            <div class="keywords-list" style="height: auto;"><!-- keywords go here --></div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xl-12">
+                    <div class="submit-field">
+                        <h5>Describe Your Project</h5>
+                        <textarea class="with-border" cols="30" rows="5"></textarea>
+                        <div class="uploadButton margin-top-30">
+                            <input accept="image/*, application/pdf" class="uploadButton-input" id="upload" multiple=""
+                                   type="file">
+                            <label class="uploadButton-button ripple-effect" for="upload">Upload Files</label>
+                            <span class="uploadButton-file-name">Images or documents that might be helpful in describing your project</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

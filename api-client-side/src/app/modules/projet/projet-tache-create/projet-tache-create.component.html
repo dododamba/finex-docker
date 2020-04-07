@@ -1,0 +1,199 @@
+<div class="content with-padding padding-bottom-10">
+
+    <div class="dashboard-headline">
+        <h4 class="wither"><i class="sl sl-icon-doc"></i> Enregistrement <a class="button pull-right"
+                                                                            routerLink='/taches/list'><i
+                class="fa fa-list"></i> Liste </a></h4>
+
+    </div>
+
+    <!-- Section -->
+    <div class="dashboard-box margin-top-0">
+
+        <!-- Headline -->
+
+        <form (ngSubmit)="create()" [formGroup]="fGroup" enctype="multipart/form-data">
+
+            <!-- Title -->
+            <div class="jumbotron">
+                <div class="row with-forms">
+                    <div class="col-md-7">
+                        <label>Libellé <strong class="text-danger">(*)</strong> </label>
+                        <input class="with-border" formControlName="libelle" type="text">
+                        <div *ngIf="fGroup.controls['libelle'].invalid && (fGroup.controls['libelle'].dirty || fGroup.controls['libelle'].touched)">
+                            <div *ngIf="fGroup.controls['libelle'].errors.required">
+                                <p class="text-danger">Entrez un libellé</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <mat-form-field class="col-md-5">
+                        <label>Priorité <strong class="text-danger">(*)</strong> </label>
+
+                        <input type="text"
+                               aria-label="Number"
+                               class="search-field"
+                               matInput
+                               formControlName="priorite"
+                               [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of options" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+
+                        <div *ngIf="fGroup.controls['priorite'].invalid && (fGroup.controls['priorite'].dirty || fGroup.controls['priorite'].touched)">
+                            <div *ngIf="fGroup.controls['priorite'].errors.required">
+                                <p class="text-danger">Precisez la priorité </p>
+                            </div>
+                        </div>
+
+
+                    </mat-form-field>
+
+                </div>
+
+
+                <div class="row with-forms">
+                    <mat-form-field class="col-md-12">
+                        <mat-label>Executants</mat-label>
+                        <mat-select  class="search-field" multiple>
+                            <mat-option *ngFor="let item of employes" [value]="item.slug"> {{item.nom}} {{ item.prenom}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <div >
+
+
+
+                        <!--
+
+       <select class="chosen-select-no-single"  formControlName="executant" >
+                              <option *ngFor="let item of employes" value="{{ item.slug }}">{{ item.nom }} {{ item.prenom }}</option>
+                            </select>
+                        -->
+
+
+                        <div *ngIf="fGroup.controls['executant'].invalid && (fGroup.controls['executant'].dirty || fGroup.controls['executant'].touched)">
+                            <div *ngIf="fGroup.controls['executant'].errors.required">
+                                <p class="text-danger">Selectionez l'employé chargé d'executer la tache </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--
+
+                           <div class="container">
+                     <h3>Charger des images</h3>
+                     <div class="well" data-bind="fileDrag: multiFileData">
+                         <div class="form-group row">
+                             <div class="col-md-4">
+                                 <input (change)="onSelectFile($event)" accept="image/*" formControlName="images" multiple
+                                        type='file'>
+                             </div>
+                             <div class="col-md-8">
+                                 <div *ngFor='let url of urls'>
+                                     <div class="row with-forms">
+                                         <div class="col-md-12">
+                                             ​
+                                             <div class="polaroid">
+                                                 <img [src]="url" alt="Norther Lights" style="width:100%">
+                                                 <div class="container">
+                                                     <div class="row">
+                                                         <div class="col-md-12">
+                                                             <button (click)="removePic(url)" class="btn btn-xs btn-danger "
+                                                                     type="button"><i class="fa fa-trash"></i>
+                                                             </button>
+                                                             &nbsp; &nbsp;
+                                                             <button (click)="removePic(url)" class="btn btn-xs btn-info "
+                                                                     type="button"><i class="fa fa-info"></i>
+                                                             </button>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+
+                         </div>
+
+                     </div>
+                 </div>
+
+
+                  <div class="container">
+
+                     <h3>Charger des fichier : pdf ou word </h3>
+                     <div class="well" data-bind="fileDrag: multiFileData">
+                         <div class="form-group row">
+                             <div class="col-md-12">
+                                 <input (change)="onSelectPDF($event)" accept="application/msword, text/plain, application/pdf" formControlName="fichiers"
+                                        multiple
+                                        type='file'>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+                -->
+
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <label>Date debut <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input (onChange)="date = $event" [dpDayPicker]="datePickerConfig"
+                                   [theme]="'dp-material'"
+                                   formControlName="dateDebut"/>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Date Fin <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input (onChange)="date = $event" [dpDayPicker]="datePickerConfig"
+                                   [theme]="'dp-material'"
+                                   formControlName="dateFin"/>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <div class="row with-forms">
+                    <div class="col-md-12">
+                        <label>Description</label>
+                        <textarea class="WYSIWYG" cols="40" formControlName="description" id="summary" name="summary"
+                                  rows="3"
+                                  spellcheck="true"></textarea></div>
+                </div>
+
+                <div *ngIf="fGroup.controls['description'].invalid && (fGroup.controls['description'].dirty || fGroup.controls['description'].touched)">
+                    <div *ngIf="fGroup.controls['description'].errors.min">
+                        <p class="text-danger">La description doit contenir au moins 15 Charactères</p>
+                    </div>
+                    <div *ngIf="fGroup.controls['description'].errors.max">
+                        <p class="text-danger">La description doit exceder 1000 Charactères</p>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="comment-btn">
+                        <button class="button ripple-effect big margin-top-30" href="#" type="submit">Enregistrer
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+        <!-- Row / End -->
+    </div>
+    <!-- Section / End -->
+
+
+</div>

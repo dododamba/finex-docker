@@ -1,0 +1,22 @@
+<div class="dashboard-headline">
+    <h3>Direction</h3>
+
+    <!-- Breadcrumbs -->
+    <nav class="dark" id="breadcrumbs">
+        <ul>
+            <li><a [routerLink]="['/dashboard']" routerLinkActive="router-link-active">Tableau de bord </a></li>
+            <li>Directions</li>
+        </ul>
+    </nav>
+</div>
+
+<div class="row">
+
+    <!-- Dashboard Box -->
+    <div class="col-xl-12">
+        <div class="dashboard-box margin-top-0">
+
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

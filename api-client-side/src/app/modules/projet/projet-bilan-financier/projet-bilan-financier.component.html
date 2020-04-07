@@ -1,0 +1,156 @@
+<div id="">
+
+    <div class="headline">
+        <h2> Bilan financier du projet :  {{ projet.nom }}  <a class="button pull-right"
+                                                                 routerLink='/projets/{{slug}}'><i
+                class="fa fa-list"></i> << Retour </a></h2>
+    </div>
+
+    <div>
+        <div class="jumbotron">
+            <table class="col-md-12">
+                <tbody>
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Nom du Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Numero du Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.numeroProjet }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Budget Prévisionnel : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{projet.budgetPrevisionel}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Buget Réel : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{projet.budgetReel}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Contrepartie : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong></strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <br><br><br>
+
+
+                <div *ngIf="projet.financements">
+
+                    <div class="">
+
+
+                        <table class="basic-table booking-table table-responsive">
+                            <thead>
+                            <tr>
+                                <th>Partenaire</th>
+                                <th>Type de Financement</th>
+                                <th>Montant Prevu</th>
+                                <th>Montant Engagé</th>
+                                <th>Montant Restant</th>
+                                <th>Devise</th>
+                                <th>Date de Signature</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let item of projet.financements">
+                                <td>{{item.partenaires[0].nom}}</td>
+                                <td>{{item.typeFinancement.libelle}}</td>
+                                <td>{{item.montantTotal}}</td>
+                                <td>{{item.montantEncaisse}}</td>
+                                <td>{{item.montantRestant}}</td>
+                                <td>{{item.device}}</td>
+                                <td>{{item.dateSignature}}</td>
+                                <td class="btn-group">
+                                    <button (click)="show(item.slug)" class="btn btn-xs btn-info"><i
+                                            class="icon-feather-eye"></i></button>&nbsp;
+
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <br>
+
+                </tbody>
+            </table>
+            <div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<router-outlet></router-outlet>

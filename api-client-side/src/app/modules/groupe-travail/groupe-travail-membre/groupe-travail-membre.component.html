@@ -1,0 +1,61 @@
+<div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="dashboard-list-box">
+        <div class="headline"><i class="fa fa-list"></i> Liste <a class="button pull-right"
+                                                                  routerLink='/groupe-travail/member-create/{{slug}}'><i
+                class="fa fa-plus"></i> Ajouter </a></div>
+        <div class="center">
+            <div class="freelancers-container freelancers-list-layout compact-list margin-top-35">
+				
+                <!--Freelancer -->
+                <div  *ngIf="group.membres">
+
+                    <div class="freelancer" *ngFor="let item of group.membres">
+    
+                        <!-- Overview -->
+                        <div class="freelancer-overview">
+                            <div class="freelancer-overview-inner">
+                                
+                                <!-- Bookmark Icon -->
+                                <span class="bookmark-icon"></span>
+                                
+                                <!-- Avatar -->
+                                <div class="freelancer-avatar">
+                                    <div class="verified-badge"></div>
+                                    <a href="single-freelancer-profile.html"></a>
+                                </div>
+        
+                                <!-- Name -->
+                                <div class="freelancer-name">
+                                    <h4><a href="#">{{item.nom}} &nbsp; {{item.prenom}}</a></h4>
+                                    <span>UI/UX Designer</span>
+                                    <!-- Rating -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Details -->
+                        <div class="freelancer-details full-right">
+                            
+                            <a href="single-freelancer-profile.html" class="button button-sliding-icon ripple-effect">View Profile <i class="icon-material-outline-arrow-right-alt"></i></a>
+                        </div>
+                   
+                    </div>
+
+                </div>
+               
+                <!-- Freelancer / End -->
+    
+                
+
+    
+            </div>
+            <br>
+            <br>
+
+        </div>
+    </div>
+    
+</div>
+
+
+   

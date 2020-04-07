@@ -1,0 +1,78 @@
+<div class="dashboard-box margin-top-0 ">
+    <div class="headline">
+        <p class="text-danger">Les champs marqués par un ( <i class="text-danger glyphicon glyphicon-asterisk"></i>)
+            sont obligatoires !</p>
+
+        <div class="dashboard-headline">
+            <h4 class="wither"><i class="sl sl-icon-doc"></i> Enregistrement <a class="button pull-right"
+                                                                                routerLink='/regions/list'><i
+                    class="fa fa-list"></i> Liste </a></h4>
+
+        </div>
+    </div>
+    <!-- Nav tabs -->
+    <div>
+
+        <!-- Tab panes -->
+        <form (ngSubmit)="submit()" [formGroup]="fGroup" enctype="multipart/form-data">
+            <div class="content with-padding padding-bottom-10">
+                <div class="jumbotron">
+                    <div class="submit-field">
+
+                        <div class="col-xl-12">
+                            <label>Nom <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input class="search-field" formControlName="nom" placeholder="ex : Estuaire"
+                                   type="text">
+
+                            <div *ngIf="fGroup.controls['nom'].invalid && (fGroup.controls['nom'].dirty || fGroup.controls['nom'].touched)">
+                                <div *ngIf="fGroup.controls['nom'].errors.required">
+                                    <p class="text-danger">Entrez le nom de la Région !</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-xl-12">
+                                <label>Chef Lieux <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                <input  type="text" formControlName="cheflieux"/>
+                        
+                    </div>
+
+
+                   <div class="submit-field">
+
+                        <div class="col-xl-12">
+                            <label>Description</label>
+                            <textarea class="WYSIWYG" cols="40" formControlName="description" id="summary" name="summary" rows="3"
+                                      spellcheck="true"> </textarea>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div>
+
+                        <button class="button ripple-effect big margin-top-30" style="background: #139469;color: #fff"
+                                type="submit">Enregistrer <i
+                                class="fa fa-save"></i></button> &nbsp;
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+
+
+    </div>
+
+
+</div>
+
+se-create works!</p>

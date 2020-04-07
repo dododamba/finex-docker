@@ -1,0 +1,89 @@
+<div class="dashboard-box margin-top-0">
+
+    <div class="headline">
+        <h4>
+            <strong>
+                Liste des projets
+            </strong>
+            <a class="button pull-right" routerLink='/projets/create'><i class="icon-feather-plus-circle"></i> Ajouter
+            </a>
+        </h4>
+    </div>
+
+    <div *ngFor="let item of projets" class="freelancer">
+        <div class="freelancer-overview">
+            <div class="confirmation-title">
+                <div class="freelancer-name">
+                    <h2><strong>{{item.id}} : </strong>
+                        <p class="text-sucess"> {{ item.nom }}</p></h2>
+                </div>
+                <div class="freelancer-overview-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="confirmation-details detail">
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td class="title">Responsable du projet</td>
+                                        <td class="b-id">{{ item.responsable.nom }} {{ item.responsable.prenom }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Budget Prévisionel</td>
+                                        <td>{{ item.budgetPrevisionel }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Date de début</td>
+                                        <td>{{ parseDate(item.dateDebut) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="title">Date de fin</td>
+                                        <td>{{ parseDate(item.dateFin) }}</td>
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="make-payment">
+
+                <tr>
+                    <td>
+                        <button (click)="onDetail(item.slug)" class="btn btn-xs btn-info">Détail</button>&nbsp;
+                        <button class="btn btn-xs btn-warning" href="#">Edition</button>&nbsp;
+                        <button (click)="onDelete(item)" class="btn btn-xs btn-danger">Suppression</button> &nbsp;
+                        &nbsp;
+                    </td>
+                </tr>
+            </div>
+        </div>
+        <br>
+
+    </div>
+
+</div>
+
+
+<div class="clearfix"></div>
+<div class="pagination-container margin-top-20 margin-bottom-20">
+
+
+    <nav class="pagination">
+        <ul>
+
+            <br>
+            <br>
+
+            <li *ngIf="last"><a (click)="previewPage()"><i class="sl sl-icon-arrow-left"></i></a></li>
+            <li><a>{{ pageNumber + 1}}</a></li>
+            <li *ngIf="numberOfElements < totalElements && !last"><a (click)="nextPage()">{{ pageNumber + 2}}</a></li>
+            <li *ngIf="!last"><a (click)="nextPage()"><i class="sl sl-icon-arrow-right"></i></a></li>
+        </ul>
+    </nav>
+</div>
+<button class="button preview pull-left">{{numberOfElements}}/ {{totalElements}} projets</button>
+<button class="button  pull-right">Imprimer</button>
+<router-outlet></router-outlet>

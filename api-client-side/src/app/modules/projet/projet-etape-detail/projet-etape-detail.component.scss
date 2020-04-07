@@ -1,0 +1,41 @@
+legend {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    width: 35%;
+    color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 5px 5px 10px;
+    background-color: #1F497D;
+  }
+  
+  .FixedHeightContainer {
+    float: right;
+    height: 250px;
+    width: 100%;
+    padding: 3px;
+  }
+  
+  .scroll {
+    height: 224px;
+    overflow: auto;
+    background: #fff;
+  }
+  
+  th {
+    color: #D5DDE5;
+    background: #1b1e24;
+    border-bottom: 4px solid #9ea7af;
+    border-right: 1px solid #343a45;
+    font-size: 23px;
+    font-weight: 100;
+    padding: 24px;
+  }
+  
+  tr:hover td {
+    background: #005294;
+    color: #FFFFFF;
+    border-top: 1px solid #22262e;
+  }
+  

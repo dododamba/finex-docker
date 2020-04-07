@@ -1,0 +1,55 @@
+<div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="dashboard-list-box">
+        <div class="headline"><i class="fa fa-list"></i> Liste <a class="button pull-right"
+                                                                  routerLink='/sous-secteur/create'><i
+                class="fa fa-plus"></i> Ajouter </a></div>
+        <div class="table-box">
+            <table class="basic-table booking-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Secteur</th>
+                    <th>Date de Creation</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of soussecteurs">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.nom }}</td>
+                    <td></td>
+                    <td>{{item.secteur.nom}} </td>
+                    <td>{{  parseDate(item.createdAt) }}</td>
+
+                    <td class="btn-group">
+                        <button (click)="show(item.slug)" class="btn btn-xs btn-info"><i class="icon-feather-eye"></i>
+                        </button>&nbsp;
+                        <button (click)="edit(item.slug)" class="btn btn-xs btn-warning"><i
+                                class="icon-line-awesome-edit"></i></button>&nbsp;
+                        <button (click)="delete(item.slug)" class="btn btn-xs btn-danger"><i
+                                class="icon-feather-trash"></i></button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="pagination-container">
+        <nav class="pagination">
+            <ul>
+
+                <li *ngIf="last"><a (click)="previewPage()"><i class="sl sl-icon-arrow-left"></i></a></li>
+                <li><a>{{ pageNumber + 1}}</a></li>
+                <li *ngIf="numberOfElements < totalElements && !last"><a (click)="nextPage()">{{ pageNumber + 2}}</a>
+                </li>
+                <li *ngIf="!last"><a (click)="nextPage()"><i class="sl sl-icon-arrow-right"></i></a></li>
+            </ul>
+        </nav>
+        <button class="button preview pull-left">{{numberOfElements}}/ {{totalElements}} Financements</button>
+        <button class="button  pull-right">Imprimer</button>
+    </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,150 @@
+<div class="dashboard-box margin-top-0">
+
+    <div class="headline">
+        <h4><i class="fa fa-list"></i> <strong>Enregistrement</strong> <a class="button pull-right"
+                                                                          routerLink='/financements/list'><i
+                class="fa fa-plus"></i> Liste </a></h4>
+
+        <p style="color: red; font-size: 0.99em;">Les champs marqués par un (*)
+            sont obligatoires !</p>
+    </div>
+
+    <div class="content with-padding padding-bottom-10">
+        <form (ngSubmit)="submit()" [formGroup]="fGroup" enctype="multipart/form-data">
+
+
+            <div class=" submit-field">
+                <div class="col-xl-12">
+                    <label>Libellé <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                    <input class="search-field" formControlName="libelle" type="text">
+
+                    <div *ngIf="fGroup.controls['libelle'].invalid && (fGroup.controls['libelle'].dirty || fGroup.controls['libelle'].touched)">
+                        <div *ngIf="fGroup.controls['libelle'].errors.required">
+                            <p class="text-danger">Entrez le libelle du projet !</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="col-xl-12">
+
+                <div class=" submit-field">
+
+
+                    <label>Date De Signature de l'accord de financement <i
+                            class="text-danger glyphicon glyphicon-asterisk"></i></label>
+
+                    <input formControlName="dateSignature" type="date"/>
+
+                    <div *ngIf="fGroup.controls['dateSignature'].invalid && (fGroup.controls['dateSignature'].dirty || fGroup.controls['dateSignature'].touched)">
+                        <div *ngIf="fGroup.controls['dateSignature'].errors.required">
+                            <p class="text-danger">Entrez la date de debut du projet !</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class=" submit-field">
+
+                <div class="col-xl-12">
+
+
+                    <label>Montant du financement</label>
+                    <input class="search-field" formControlName="montantTotal" type="text">
+
+                </div>
+
+
+            </div>
+
+
+            <div class=" submit-field">
+
+                <div class="col-xl-12">
+
+                    <label>Type de financement</label>
+
+                    <select class="chosen-select-no-single" formControlName="typeSlug">
+                        <option disabled>Selectioner un type de financement</option>
+                        <option *ngFor="let item of types" value="{{item.slug}}"> {{ item.libelle }}
+                            &nbsp; {{ item.prenom }} </option>
+                    </select>
+
+                    <div *ngIf="fGroup.controls['typeSlug'].invalid && (fGroup.controls['typeSlug'].dirty || fGroup.controls['typeSlug'].touched)">
+                        <div *ngIf="fGroup.controls['typeSlug'].errors.required">
+                            <p class="text-danger">Choissisez le type de financement
+                                !</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xl-12">
+                    <div class=" submit-field">
+                        <label>Projet </label>
+
+                        <select formControlName="projetSlug">
+                            <option *ngFor="let item of projets" value="{{item.slug}}"> {{ item.nom }}</option>
+                        </select>
+                        <div *ngIf="fGroup.controls['projetSlug'].invalid && (fGroup.controls['projetSlug'].dirty || fGroup.controls['projetSlug'].touched)">
+                            <div *ngIf="fGroup.controls['projetSlug'].errors.required">
+                                <p class="text-danger">Choissisez le projet au quel se rapporte ce financement
+                                    !</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="jumbotron">
+
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <div class="submit-field">
+                                    <h5>Partenaire </h5>
+                                    <select formControlName="partenaireSulg">
+                                        <option *ngFor="let item of partenaires"
+                                                value="{{item.slug}}"> {{ item.nom }}</option>
+                                    </select>
+                                    <div *ngIf="fGroup.controls['partenaireSulg'].invalid && (fGroup.controls['partenaireSulg'].dirty || fGroup.controls['partenaireSulg'].touched)">
+                                        <div *ngIf="fGroup.controls['partenaireSulg'].errors.required">
+                                            <p class="text-danger">Choissisez le partenaire qui auteur du financement
+                                                !</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-4">
+                                <div class="submit-field">
+
+                                    <button class=" uploadButton-input">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div *ngIf="!fGroup.invalid" class="comment-btn">
+
+                <button class="button" style="background: #139469;color: #fff" type="submit">Enregistrer <i
+                        class="fa fa-save"></i></button>
+
+            </div>
+
+
+        </form>
+    </div>
+
+</div>

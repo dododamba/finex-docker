@@ -1,0 +1,447 @@
+<div class="headline">
+    <h4><strong class="text-danger"> Les champs marqués par un (*)
+        sont obligatoires !
+    </strong> <a class="button pull-right" routerLink='/projets/list'>
+        <i class="icon-feather-list"></i> Liste </a>
+    </h4>
+</div>
+
+<div class="dashboard-box margin-top-0">
+
+
+    <div class="tabs">
+        <div class="tabs-header">
+            <ul>
+                <li class="active"><a data-tab-id="1" href="#tab-1">Project</a></li>
+                <li><a data-tab-id="2" href="#tab-2">Partenaires</a></li>
+                <li><a data-tab-id="3" href="#tab-3">Caractéristique techniques</a></li>
+                <li><a data-tab-id="4" href="#tab-4">Résumé</a></li>
+
+            </ul>
+            <div class="tab-hover" style="left: 0px; width: 330px;"></div>
+            <nav class="tabs-nav">
+                <span class="tab-prev"><i class="icon-material-outline-keyboard-arrow-left"></i></span>
+                <span class="tab-next"><i class="icon-material-outline-keyboard-arrow-right"></i></span>
+            </nav>
+        </div>
+        <!-- Tab Content -->
+        <div class="tabs-content" style="height: 293px;">
+
+            <div class="content with-padding padding-bottom-10">
+                <form (ngSubmit)="submit()" [formGroup]="fGroup" enctype="multipart/form-data">
+
+                    <div class="tab active" data-tab-id="1">
+                        <div class="add-listing-section">
+
+                            <!-- Headline -->
+                            <div class="add-listing-headline">
+                                <h3><i class="sl sl-icon-doc"></i> Informations du Projet </h3>
+                            </div>
+
+                            <!-- Title -->
+                            <fieldset>
+                                <legend><b> Projet </b></legend>
+                                <div class="row submit-field">
+                                    <div class="col-xl-12">
+                                        <label>Nom <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                        <input class="search-field" formControlName="nom" type="text">
+
+                                        <div *ngIf="fGroup.controls['nom'].invalid && (fGroup.controls['nom'].dirty || fGroup.controls['nom'].touched)">
+                                            <div *ngIf="fGroup.controls['nom'].errors.required">
+                                                <p class="text-danger">Entrez le nom du projet !</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="col-xl-12">
+                                        <label>Numero du projet <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                        <input class="search-field" formControlName="numeroProjet" type="text">
+
+                                        <div *ngIf="fGroup.controls['numeroProjet'].invalid && (fGroup.controls['numeroProjet'].dirty || fGroup.controls['numeroProjet'].touched)">
+                                            <div *ngIf="fGroup.controls['numeroProjet'].errors.required">
+                                                <p class="text-danger">Entrez le numero du projet !</p>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+                            </fieldset>
+
+                            <fieldset>
+                                <legend> Delai</legend>
+                                <div class="row submit-field">
+
+                                    <div class="col-xl-12">
+                                        <label>Date De Debut <i
+                                                class="text-danger glyphicon glyphicon-asterisk"></i></label>
+
+                                        <input formControlName="dateDebut" type="date"/>
+
+                                        <div *ngIf="fGroup.controls['dateDebut'].invalid && (fGroup.controls['dateDebut'].dirty || fGroup.controls['dateDebut'].touched)">
+                                            <div *ngIf="fGroup.controls['dateDebut'].errors.required">
+                                                <p class="text-danger">Entrez la href="#" date de debut du projet !</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-xl-12">
+                                        <label>Date butoire <i
+                                                class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                        <input formControlName="dateButoire" type="date"
+                                        />
+
+                                        <div *ngIf="fGroup.controls['dateButoire'].invalid && (fGroup.controls['dateButoire'].dirty || fGroup.controls['dateButoire'].touched)">
+                                            <div *ngIf="fGroup.controls['dateButoire'].errors.required">
+                                                <p class="text-danger">Entrez la href="#" date butoire du projet !</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend><b>Budget</b></legend>
+                                <div class="row submit-field">
+
+                                    <div class="col-xl-12">
+                                        <label>Budget Prévisionnel <i
+                                                class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                        <input class="search-field" formControlName="budgetPrevisionel" type="text">
+
+
+                                        <div *ngIf="fGroup.controls['budgetPrevisionel'].invalid && (fGroup.controls['budgetPrevisionel'].dirty || fGroup.controls['budgetPrevisionel'].touched)">
+                                            <div *ngIf="fGroup.controls['budgetPrevisionel'].errors.required">
+                                                <p class="text-danger">Précisez le budget previsionel du projet !</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend><b>Detail</b></legend>
+
+                                <div class="row submit-field">
+
+                                    <!-- City -->
+                                    <div class="col-xl-12">
+                                        <label>Resposable du Projet</label>
+                                        <select class="chosen-select-no-single" formControlName="employeResponsable">
+                                            <option disabled>Selectioner un employé</option>
+                                            <option *ngFor="let item of employes" value="{{item.slug}}"> {{ item.nom }}
+                                                &nbsp; {{ item.prenom }} </option>
+                                        </select>
+
+                                        <div *ngIf="fGroup.controls['employeResponsable'].invalid && (fGroup.controls['employeResponsable'].dirty || fGroup.controls['employeResponsable'].touched)">
+                                            <div *ngIf="fGroup.controls['employeResponsable'].errors.required">
+                                                <p class="text-danger">Choissisez l'employé Responsble de suivi du
+                                                    projet
+                                                    !</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row submit-field">
+                                    <div class="col-xl-12">
+                                        <label>Objectifs et contenu du projet </label>
+                                        <textarea class="WYSIWYG" formControlName="description"
+                                                  spellcheck="true"></textarea>
+
+                                        <div *ngIf="fGroup.controls['description'].invalid && (fGroup.controls['description'].dirty || fGroup.controls['description'].touched)">
+                                            <div *ngIf="fGroup.controls['description'].errors.required">
+                                                <p class="text-danger">Entrez une description !</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Maitre d'oeuvrage</legend>
+                                <label>Choississez un ou plusieurs beneficiares du projet</label>
+                                <select (change)="addMaitreOeuvrage($event.target.value)" formControlName="maitreoevrage"
+                                        multiple>
+                                    <option *ngFor="let item of maitreOeuvrages"
+                                            value="{{item.nom}}"> {{ item.nom }}</option>
+                                </select>
+
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Soumissionaires</legend>
+                                <label>Choississez les entreprises qui interviennet dans le projet</label>
+                                <select (change)="addSoumissionaire($event.target.value)" formControlName="soumissionaire"
+                                        multiple>
+                                    <option *ngFor="let item of soumissionaires"
+                                            value="{{item.nom}}"> {{ item.nom }}</option>
+                                </select>
+
+                            </fieldset>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="tab" data-tab-id="2">
+
+                        <h3>Partenaire</h3>
+
+                        <div class="add-listing-section">
+
+                            <!-- Headline -->
+                            <div class="add-listing-headline">
+                                <h3><i class="sl sl-icon-doc"></i> Informations des Partenaires </h3>
+                            </div>
+
+
+                            <div class="row">
+
+
+                                <div class="col-xl-12">
+                                    <label>Partenaire</label>
+
+                                    <select (change)="addPartenaire($event.target.value)" formControlName="partenaires"
+                                            id="slim-select" multiple>
+                                        <option *ngFor="let item of partenaires" value="{{ item.nom }}"
+                                        > {{ item.nom }} &nbsp;
+                                        </option>
+
+                                    </select>
+
+                                    <div *ngIf="fGroup.controls['partenaires'].invalid && (fGroup.controls['partenaires'].dirty || fGroup.controls['partenaires'].touched)">
+                                        <div *ngIf="fGroup.controls['partenaires'].errors.required">
+                                            <p class="text-danger"> Selectionez les partenaires du projets !</p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="tab" data-tab-id="3">
+
+                        <div class="add-listing-section">
+
+                            <!-- Headline -->
+                            <div class="add-listing-headline">
+                                <h3><i class="sl sl-icon-doc"></i> Caracteriques techniques </h3>
+                            </div>
+
+
+                            <div class="row ">
+
+
+                                <div class="col-xl-5">
+                                    <label>Libéllé <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                    <input class="search-field" formControlName="libelle" type="text">
+                                </div>
+
+                                <div class="col-xl-2">
+                                    <label>Nature <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                    <select class="chosen-select-no-single" formControlName="nature">
+                                        <option disabled>Selectioner une valeur</option>
+                                        <option *ngFor="let item of natures" value="{{item}}"> {{ item }}
+                                    </select>
+                                </div>
+
+                                <div *ngIf="isDate(fGroup.value.nature);" class="col-xl-5">
+                                    <label>Valeur <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                    <input class="search-field" formControlName="valeur" type="date">
+                                </div>
+                                <div *ngIf="!isDate(fGroup.value.nature);" class="col-xl-5">
+                                    <label>Valeur <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                    <input class="search-field" formControlName="valeur" type="text">
+                                </div>
+                            </div>
+
+                            <br>
+                            <button (click)="addCaracTechnique(fGroup.value.libelle,fGroup.value.valeur,fGroup.value.nature)"
+                                    class="button"
+                                    type="button">Ajouter
+                            </button>
+                            <br>
+                            <div class="FixedHeightContainer scroll">
+
+                                <table class="col-xl-12">
+
+                                    <tbody class="table-hover">
+                                    <div *ngFor="let item of caracteristiqueTechniques" class="col-xl-12">
+                                        <tr>
+                                            <td class="text-left col-xl-8">Libllé</td>
+                                            <td class="text-left col-xl-4"><strong>{{ item.libelle }}</strong></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="text-left col-xl-8">Nature</td>
+                                            <td class="text-left col-xl-4"><strong>{{ item.nature }}</strong></td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td class="text-left col-xl-8">Valeur</td>
+                                            <td class="text-left col-xl-4"><strong>{{ item.valeur }}</strong></td>
+                                        </tr>
+                                        <br>
+                                        <br>
+                                    </div>
+
+
+                                </table>
+
+
+                                <br>
+                            </div>
+
+
+                            <br>
+
+                        </div>
+                    </div>
+
+                    <div class="tab" data-tab-id="4">
+                        <h3>Résumé des Informations saisies</h3>
+
+                        <table class="col-xl-12">
+
+                            <tbody class="table-hover">
+                            <tr>
+                                <td class="text-left col-xl-8">Nom du Projet</td>
+                                <td class="text-left col-xl-4"><strong>{{ fGroup.value.nom }}</strong></td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="text-left col-xl-8">Date De Debut</td>
+                                <td class="text-left col-xl-4"><strong>{{ fGroup.value.dateDebut }}</strong></td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-left col-xl-8">Date butoire</td>
+                                <td class="text-left col-xl-4"><strong>{{ fGroup.value.dateButoire }}</strong>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-left col-xl-8">Budget Prévisionnel</td>
+                                <td class="text-left col-xl-4"><strong>{{ fGroup.value.budgetPrevisionel }}</strong>
+                                </td>
+                            <tr>
+
+                            <tr>
+                                <td class="text-left col-xl-8">Responsable du Projet</td>
+                                <td class="text-left col-xl-4">
+                                    <strong>{{ fGroup.value.employeResponsable.nom }}</strong>
+                                </td>
+                            <tr>
+
+                            <tr>
+                                <td class="text-left col-xl-8">Objet du projet</td>
+                                <td class="text-left col-xl-4"><strong>{{ fGroup.value.description }}</strong></td>
+                            </tr>
+
+
+                            <fieldset *ngIf="fGroup.value.partenaires">
+                                <legend>Partenaires</legend>
+                                <div *ngFor="let item of fGroup.value.partenaires" class="col-xl-12">
+                                    <p class="text-success"> {{item}}</p>
+                                </div>
+                            </fieldset>
+
+                            <br>
+                            <br>
+                            <fieldset *ngIf="fGroup.value.maitreoevrage">
+                                <legend>Maitre d'oeuvrages</legend>
+                                <div *ngFor="let item of fGroup.value.maitreoevrage" class="col-xl-12">
+                                    <p class="text-success"> {{item}}</p>
+                                </div>
+                            </fieldset>
+                            <br>
+                            <br>
+                            <fieldset *ngIf="fGroup.value.soumissionaire">
+                                <legend>Soumissionaires</legend>
+                                <div *ngFor="let item of fGroup.value.soumissionaire" class="col-xl-12">
+                                    <p class="text-success"> {{item}}</p>
+                                </div>
+                            </fieldset>
+
+
+                            <br>
+                            <br>
+                            <div class="FixedHeightContainer scroll">
+                                <legend>Cataracteristiques techniques</legend>
+
+                                <table class="col-xl-12">
+
+                                    <tbody class="table-hover">
+                                    <div *ngFor="let item of caracteristiqueTechniques" class="col-xl-12">
+                                        <tr>
+                                            <td class="text-left col-xl-8">Libllé</td>
+                                            <td class="text-left col-xl-4"><strong>{{ item.libelle }}</strong></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="text-left col-xl-8">Nature</td>
+                                            <td class="text-left col-xl-4"><strong>{{ item.nature }}</strong></td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td class="text-left col-xl-8">Valeur</td>
+                                            <td class="text-left col-xl-4"><strong>{{ item.valeur }}</strong></td>
+                                        </tr>
+                                        <br>
+                                        <br>
+                                    </div>
+
+
+                                </table>
+
+
+                                <br>
+                            </div>
+
+                            <br>
+                            <br>
+
+
+                            </tbody>
+                            <tfoot>
+                            <br>
+
+                            <button class="button" style="background: #259972;color: #fff" type="submit">Enregistrer <i
+                                    class="fa fa-save"></i></button>
+                            </tfoot>
+                        </table>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

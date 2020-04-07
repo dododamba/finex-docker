@@ -1,0 +1,166 @@
+$color_1: #fff;
+$color_2: #333;
+$color_3: #888;
+$color_4: #3b5998;
+$color_5: #1da1f2;
+$color_6: #dd4b39;
+$background_color_1: #fff;
+$background_color_2: #005294;
+
+$border_color_1: #468c21;
+$border_color_2: #D60D45;
+$border_color_3: #a95921;
+
+/* ---------------------------------- */
+/* Add Listing
+------------------------------------- */
+.add-listing-section {
+	border-radius: 4px;
+	background-color: $background_color_1;
+	box-shadow: 0 0 12px 0 rgba(0,0,0,0.06);
+	padding: 0 30px 25px 30px;
+	margin-bottom: 25px;
+	.row.with-forms {
+		input {
+			margin-bottom: 22px;
+			margin-bottom: 22px;
+		}
+		input[type="text"] {
+			margin-bottom: 22px;
+		}
+		input[type="password"] {
+			margin-bottom: 22px;
+		}
+		input[type="email"] {
+			margin-bottom: 22px;
+		}
+		input[type="number"] {
+			margin-bottom: 22px;
+		}
+		textarea {
+			margin-bottom: 22px;
+		}
+		select {
+			margin-bottom: 22px;
+		}
+		.chosen-container {
+			margin-bottom: 22px;
+		}
+	}
+	textarea {
+		min-height: 200px;
+		margin-bottom: 35px;
+	}
+}
+.add-listing-headline {
+	width: calc(100% + 60px);
+	left: -30px;
+	position: relative;
+	padding: 15px 30px;
+	margin: 0 0 30px 0;
+	border-radius: 4px 4px 0 0;
+	background-color: $background_color_2;
+	border-bottom: 1px solid #eaeaea;
+	h3 {
+		padding: 0;
+		margin: 0;
+		line-height: 32px;
+		font-size: 22px;
+		position: relative;
+		top: 1px;
+		color: $color_1;
+	}
+	i {
+		padding-right: 7px;
+		display: inline-block;
+		position: relative;
+		top: 1px;
+	}
+}
+#add-listing {
+	h5 {
+		font-size: 15px;
+		font-weight: 600;
+		color: $color_2;
+		margin-bottom: 17px;
+		span {
+			color: $color_3;
+			font-weight: 400;
+		}
+		i {
+			padding-right: 4px;
+		}
+	}
+}
+.button.preview {
+	font-size: 18px;
+	font-weight: 400;
+	padding: 11px 26px;
+	display: inline-block;
+	i {
+		padding: 0;
+		margin: 0 0 0 4px;
+	}
+}
+label.fb-input {
+	color: $color_4;
+}
+label.twitter-input {
+	color: $color_5;
+}
+label.gplus-input {
+	color: $color_6;
+}
+
+
+
+
+
+.booking-table {
+	td {
+		font-weight: 500;
+	}
+	span.t-box {
+		color: $color_1;
+		background: #ccc;
+		padding: 8px 15px;
+		border: 1px solid #ccc;
+		border-radius: 30px;
+	}
+	span.paid {
+		background: #468c21;
+		border-color: $border_color_1;
+	}
+	span.approved {
+		background: #468c21;
+		border-color: $border_color_1;
+	}
+	span.unpaid {
+		background: #D60D45;
+		border-color: $border_color_2;
+	}
+	span.cancel {
+		background: #D60D45;
+		border-color: $border_color_2;
+	}
+	span.pending {
+		background: #a95921;
+		border-color: $border_color_3;
+	}
+	a.button.gray {
+		padding: 0;
+		height: 36px;
+		width: 36px;
+		text-align: center;
+		font-size: 15px;
+		line-height: 2.6;
+		border-radius: 50%;
+		background: #005294;
+		margin: 0 2px;
+	}
+	.button {
+		i {
+			padding: 0;
+		}
+	}
+}

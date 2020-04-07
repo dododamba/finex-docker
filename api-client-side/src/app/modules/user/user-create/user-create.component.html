@@ -1,0 +1,67 @@
+<div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show">
+    <p>{{ successMessage }}</p>
+</div>
+
+<div class="content with-padding padding-bottom-10">
+    <form (ngSubmit)="create(fGroup.value)" [formGroup]="fGroup">
+
+        <!-- Section -->
+        <div class="add-listing-section">
+
+            <!-- Headline -->
+            <div class="add-listing-headline">
+                <h4 class="wither"><i class="sl sl-icon-doc"></i> Enregistrement <a class="button pull-right"
+                                                                                    routerLink='/user/list'><i
+                        class="fa fa-list"></i> List </a></h4>
+
+            </div>
+
+            <!-- Title -->
+            <div class="row with-forms">
+                <div class="col-md-12">
+                    <label>Email <strong class="text-danger">(*)</strong> </label>
+                    <input class="search-field" formControlName="email" type="text">
+                </div>
+
+                <div *ngIf="fGroup.controls['email'].invalid && (fGroup.controls['email'].dirty || fGroup.controls['email'].touched)">
+                    <div *ngIf="fGroup.controls['email'].errors.required">
+                        <p class="text-danger">Entrez une adress email</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row with-forms">
+                <div class="col-md-6">
+                    <label>Employé <strong class="text-danger">(*)</strong> </label>
+                    <select class="chosen-select-no-single" formControlName="employe">
+                        <option *ngFor="let item of employes"
+                                value="{{ item.slug }}">{{ item.nom }} {{ item.prenom }}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label>Role <strong class="text-danger">(*)</strong> </label>
+                    <select class="chosen-select-no-single" formControlName="role">
+                        <option *ngFor="let item of roles" value="{{ item.name }}">{{ item.name }}</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12">
+            <div *ngIf="!fGroup.invalid" class="comment-btn">
+                <button class="button preview" href="#" type="submit">Enregistrer</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!-- Row / End -->
+<!-- Section / End -->
+
+
+
+
+

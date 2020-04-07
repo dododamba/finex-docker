@@ -1,0 +1,52 @@
+<div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="dashboard-list-box">
+        <div class="headline"><i class="fa fa-list"></i> Liste</div>
+        <div class="table-responsive">
+            <table class="basic-table booking-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Libelle</th>
+                    <th>Type Financement</th>
+                    <th>Partenaire</th>
+                    <th>Montant</th>
+                    <th>Date d'accord</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of financements">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.libelle }}</td>
+                    <td>{{ item.typeFinancement.libelle }}</td>
+                    <td>{{ item.partenaires[0].nom }}</td>
+                    <td>{{ item.montantTotal }}</td>
+                    <td>{{ parseDate(item.dateSignature) }}</td>
+
+                    <td class="btn-group">
+                        <button (click)="show(item.slug)" class="btn btn-xs btn-info"><i class="icon-feather-eye"></i>
+                        </button>&nbsp;
+                    
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="pagination-container">
+        <nav class="pagination">
+            <ul>
+
+                <li *ngIf="last"><a (click)="previewPage()"><i class="sl sl-icon-arrow-left"></i></a></li>
+                <li><a>{{ pageNumber + 1}}</a></li>
+                <li *ngIf="numberOfElements < totalElements && !last"><a (click)="nextPage()">{{ pageNumber + 2}}</a>
+                </li>
+                <li *ngIf="!last"><a (click)="nextPage()"><i class="sl sl-icon-arrow-right"></i></a></li>
+            </ul>
+        </nav>
+        <button class="button preview pull-left">{{numberOfElements}}/ {{totalElements}} Financements</button>
+        <button class="button  pull-right">Imprimer</button>
+    </div>
+</div>
+<router-outlet></router-outlet>

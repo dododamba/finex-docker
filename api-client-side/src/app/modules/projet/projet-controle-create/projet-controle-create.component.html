@@ -1,0 +1,135 @@
+<div class="dashboard-box margin-top-0 ">
+    <div class="headline">
+        <p class="text-danger">Les champs marqués par un ( <i class="text-danger glyphicon glyphicon-asterisk"></i>)
+            sont obligatoires !</p>
+
+        <div class="dashboard-headline">
+            <h4 class="wither"><i class="sl sl-icon-doc"></i> <strong class="text-success"> Nouveau Controle </strong>
+                <a class="button pull-right"
+                   routerLink='/taches/list'><i
+                        class="fa fa-list"></i> Liste </a></h4>
+
+        </div>
+    </div>
+    <!-- Nav tabs -->
+    <div>
+
+        <!-- Tab panes -->
+        <form (ngSubmit)="submit()" [formGroup]="fGroup" enctype="multipart/form-data">
+            <div class="content with-padding padding-bottom-10">
+                <div class="jumbotron">
+                    <div class="submit-field">
+
+                        <div class="col-xl-12">
+                            <label>Libellé <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input class="search-field" formControlName="libelle" placeholder="ex : Controle de realisation"
+                                   type="text">
+
+                            <div *ngIf="fGroup.controls['libelle'].invalid && (fGroup.controls['libelle'].dirty || fGroup.controls['libelle'].touched)">
+                                <div *ngIf="fGroup.controls['libelle'].errors.required">
+                                    <p class="text-danger">Entrez le libelle de cette phase du projet !</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="submit-field">
+
+                      <div class="col-md-12">
+                          <div class="row">
+                              <div class="col-xl-6">
+
+
+                                  <label>Date Controle <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                  <input (onChange)="date = $event" [dpDayPicker]="datePickerConfig" class="search-field"
+                                         [theme]="'dp-material'"
+                                         formControlName="dateControle"/>
+
+                                  <div *ngIf="fGroup.controls['dateControle'].invalid && (fGroup.controls['dateControle'].dirty || fGroup.controls['dateControle'].touched)">
+                                      <div *ngIf="fGroup.controls['dateControle'].errors.required">
+                                          <p class="text-danger">Entrez la date de controle du projet !</p>
+                                      </div>
+                                  </div>
+
+
+                              </div>
+
+                              <div class="col-xl-6">
+                                  <label>Type de Controle <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                  <select formControlName="typeControle" class="">
+                                      <option disabled>Choissez un type</option>
+                                      <option value="1">Controle sur Piece</option>
+                                      <option value="2">Controle sur place</option>
+
+                                  </select>
+
+                                  <div *ngIf="fGroup.controls['typeControle'].invalid && (fGroup.controls['typeControle'].dirty || fGroup.controls['typeControle'].touched)">
+                                      <div *ngIf="fGroup.controls['typeControle'].errors.required">
+                                          <p class="text-danger">choissez le type de controle !</p>
+                                      </div>
+                                  </div>
+
+
+                              </div>
+                          </div>
+
+
+                      </div>
+                    </div>
+
+
+
+                    <div class="submit-field">
+
+                        <div class="col-xl-12">
+                            <label>Controlleur <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input class="search-field" formControlName="controlleur" placeholder="ex : Service de controle de l'Etat"
+                                   type="text">
+
+                            <div *ngIf="fGroup.controls['controlleur'].invalid && (fGroup.controls['controlleur'].dirty || fGroup.controls['controlleur'].touched)">
+                                <div *ngIf="fGroup.controls['controlleur'].errors.required">
+                                    <p class="text-danger">Entrez le nom du controlleur  !</p>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="submit-field">
+
+                        <div class="col-xl-12">
+                            <label>Description</label>
+                            <textarea class="WYSIWYG" cols="40" formControlName="description" id="summary"
+                                      name="summary" rows="3"
+                                      spellcheck="true"> </textarea>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div>
+
+                        <button class="button ripple-effect big margin-top-30" style="background: #139469;color: #fff"
+                                type="submit">Enregistrer <i
+                                class="fa fa-save"></i></button> &nbsp;
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+
+
+    </div>
+
+
+</div>
+

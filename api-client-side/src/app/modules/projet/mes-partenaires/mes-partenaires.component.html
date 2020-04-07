@@ -1,0 +1,116 @@
+<div id="">
+
+    <div class="headline">
+            <h2> Partenaires :  {{ projet.nom }}  <a class="button pull-right" routerLink='/projets/{{slug}}'><i class="fa fa-list"></i> << Retour </a></h2>
+        </div>
+  
+    <div>
+            <div class="jumbotron"> 
+                    <table class="col-md-12">
+                            <tbody>
+                                    
+                                <tr>
+                                    <td>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                              <div class="col-md-8">
+                                                  <p>Nom du Projet : </p>
+                                              </div>  
+                                             
+                                              <div class="col-md-4">
+                                                  <strong>{{ projet.nom }}</strong>
+                                              </div>
+                                            </div>
+                                        </div>
+                                      </td>
+                              </tr>
+
+
+                    
+                                <tr>
+                                    <td>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                              <div class="col-md-8">
+                                                  <p>Numero du Projet : </p>
+                                              </div>  
+                                             
+                                              <div class="col-md-4">
+                                                  <strong>{{ projet.numeroProjet }}</strong>
+                                              </div>
+                                            </div>
+                                        </div>
+                                      </td>
+                              </tr>
+
+                              
+
+
+
+    
+
+                          
+
+                    
+
+                  
+
+                  <br><br><br>
+
+
+
+                     <div *ngIf="projet.partenaires">
+
+                      <div class="container table-box">
+                       
+                       <div class="col-md-12">
+                        <div class="headline"><i class="fa fa-list"></i> <strong class="text-success"> Partenaires
+                          :</strong> <br>
+                          <button (click)='goToAddPartenaire()' class="button pull-left"><i class="fa fa-plus"></i> Ajouter
+                          </button>
+                      </div>
+                       
+                        <table class="basic-table booking-table table-responsive">
+                            <thead>
+                                    <tr>
+                                        <th>Partenaire</th>
+                                        <th>Type de partenaire</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let item of projet.partenaires">
+                                         <td>{{item.nom}}</td>
+                                         <td>{{item.typePartenaire.libelle}}</td>
+                                         <td  class="btn-group">
+                                            <button  (click)="show(item.slug)" class="btn btn-xs btn-info"><i class="icon-feather-eye"></i></button>&nbsp;
+                                           
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                    </table>
+
+                    
+                       </div>
+                                          
+                      </div>
+                                                                                                 
+                                    
+                        
+                     </div>
+                      
+            
+                                 
+                                        <br>
+                                    
+                            </tbody>
+                        </table>
+                <div >
+                   
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+<router-outlet></router-outlet>

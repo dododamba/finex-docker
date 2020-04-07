@@ -1,0 +1,47 @@
+<div id="">
+
+    <div class="headline">
+        <h2># {{ projet.id}} : Detail du projet {{ projet.nom }}  <a class="button pull-right"
+                                                                     routerLink='/projets/list'><i
+                class="fa fa-list"></i> List </a></h2>
+    </div>
+
+    <div>
+        <div>
+            <table class="col-md-12">
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Nom du Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                </tbody>
+            </table>
+            <div>
+                <div class="form-title form-title-1">
+                    <h2>Objet du Projet</h2>
+                </div>
+                <div class=" scroll">
+                    <p>
+                        {{projet.description}}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

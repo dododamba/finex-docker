@@ -1,0 +1,112 @@
+<div>
+
+    <div class="headline">
+        <h2>Detail  <a class="button pull-right"
+                                                                     routerLink='/groupe-travail/list'><i
+                class="fa fa-list"></i> List </a></h2>
+    </div>
+
+    <div>
+        <div>
+            <table class="col-md-12">
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Nom du Groupe de travail : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ group.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Membres : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button (click)="member()"  class="button" type="button">Voir
+                                        ({{ group.membres.length }} )
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ group.projet.nom }}  &nbsp; ({{ group.projet.secteur.nom }})  </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Etapes : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button  (click)="goTOEtapes(group.projet.slug)"  class="button" type="button">Voir
+                                        ({{ group.projet.etapes.length }} )
+                                    </button>                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+             
+
+
+                
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Administrateur : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ group.administrarteur.nom }}  &nbsp; {{ group.administrarteur.prenom }} </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                
+
+
+                </tbody>
+            </table>
+        
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

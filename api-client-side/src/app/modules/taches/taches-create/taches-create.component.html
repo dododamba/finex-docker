@@ -1,0 +1,209 @@
+<div class="content with-padding padding-bottom-10">
+
+    <div class="dashboard-headline">
+        <h4 class="wither"><i class="sl sl-icon-doc"></i> Enregistrement <a class="button pull-right"
+                                                                            routerLink='/taches/list'><i
+                class="fa fa-list"></i> Liste </a></h4>
+
+    </div>
+
+    <!-- Section -->
+    <div class="dashboard-box margin-top-0">
+
+        <!-- Headline -->
+
+        <form (ngSubmit)="create()" [formGroup]="fGroup" enctype="multipart/form-data">
+
+            <!-- Title -->
+            <div class="jumbotron">
+                <div class="row with-forms">
+                    <div class="col-md-7">
+                        <label>Libellé <strong class="text-danger">(*)</strong> </label>
+                        <input class="with-border" formControlName="libelle" type="text">
+                        <div *ngIf="fGroup.controls['libelle'].invalid && (fGroup.controls['libelle'].dirty || fGroup.controls['libelle'].touched)">
+                            <div *ngIf="fGroup.controls['libelle'].errors.required">
+                                <p class="text-danger">Entrez un libellé</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-5">
+                        <label>Priorité <strong class="text-danger">(*)</strong> </label>
+                        <input class="with-border" formControlName="priorite" type="text">
+                        <div *ngIf="fGroup.controls['priorite'].invalid && (fGroup.controls['priorite'].dirty || fGroup.controls['priorite'].touched)">
+                            <div *ngIf="fGroup.controls['priorite'].errors.required">
+                                <p class="text-danger">Precisez la priorité </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row with-forms">
+                    <div class="col-md-12">
+                        <label>Excecutant <strong class="text-danger">(*)</strong> </label>
+
+                        <angular2-multiselect [(ngModel)]="selectedItems" [data]="employes"
+                                              [settings]="dropdownSettings">
+                            <c-item>
+                                <ng-template let-item="item">
+                                    <label style="color: #333;min-width: 150px;">{{item.nom}} {{ item.prenom}}</label>
+                                </ng-template>
+                            </c-item>
+                        </angular2-multiselect>
+
+
+                        <!--
+
+       <select class="chosen-select-no-single"  formControlName="executant" >
+                              <option *ngFor="let item of employes" value="{{ item.slug }}">{{ item.nom }} {{ item.prenom }}</option>
+                            </select>
+                        -->
+
+
+                        <div *ngIf="fGroup.controls['executant'].invalid && (fGroup.controls['executant'].dirty || fGroup.controls['executant'].touched)">
+                            <div *ngIf="fGroup.controls['executant'].errors.required">
+                                <p class="text-danger">Selectionez l'employé chargé d'executer la tache </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row with-forms">
+                    <div class="col-md-4">
+                        <label>Projet <strong class="text-danger">(*)</strong> </label>
+                        <select (change)="selectPoject($event.target.value)" class="chosen-select-no-single">
+                            <option disabled="disabled" selected="true">Selectionez un projet</option>
+                            <option *ngFor="let item of projets" value="{{ item.slug }}">{{ item.nom }}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>Groupe de Travail <strong class="text-danger">(*)</strong> </label>
+                        <select (change)="selectGroupeTravail($event.target.value)" class="chosen-select-no-single">
+                            <option>Selectionez un groupe de travail</option>
+                            <option *ngFor="let item of groupes" value="{{ item.slug }}">{{ item.nom }}</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>Etape <strong class="text-danger">(*)</strong> </label>
+                        <select class="chosen-select-no-single" formControlName="etape">
+                            <option *ngFor="let item of etapes" value="{{ item.slug }}">{{ item.nom }}</option>
+                        </select>
+                        <div *ngIf="fGroup.controls['etape'].invalid && (fGroup.controls['etape'].dirty || fGroup.controls['etape'].touched)">
+                            <div *ngIf="fGroup.controls['etape'].errors.required">
+                                <p class="text-danger">Precisez à quelle étape du projet se trouve la tache </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row with-forms">
+                    <div class="col-md-6">
+                        <label>Date de debut <strong class="text-danger">(*)</strong> </label>
+                        <input class="with-border" formControlName="dateDebut" type="date">
+                        <div *ngIf="fGroup.controls['dateDebut'].invalid && (fGroup.controls['dateDebut'].dirty || fGroup.controls['dateDebut'].touched)">
+                            <div *ngIf="fGroup.controls['dateDebut'].errors.required">
+                                <p class="text-danger">Précisez la date de début de cette tache </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Date de fin <strong class="text-danger">(*)</strong> </label>
+                        <input class="with-border" formControlName="dateFin" type="date">
+                        <div *ngIf="fGroup.controls['dateFin'].invalid && (fGroup.controls['dateFin'].dirty || fGroup.controls['dateFin'].touched)">
+                            <div *ngIf="fGroup.controls['dateFin'].errors.required">
+                                <p class="text-danger">Précisez la date de fin de cette tache </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <h3>Charger des images</h3>
+                    <div class="well" data-bind="fileDrag: multiFileData">
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <input (change)="onSelectFile($event)" accept="image/*" formControlName="images" multiple
+                                       type='file'>
+                            </div>
+                            <div class="col-md-8">
+                                <!-- ko foreach: {data: multiFileData().dataURLArray, as: 'dataURL'} -->
+                                <div *ngFor='let url of urls'>
+                                    <div class="row with-forms">
+                                        <div class="col-md-12">
+                                            ​
+                                            <div class="polaroid">
+                                                <img [src]="url" alt="Norther Lights" style="width:100%">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <button (click)="removePic(url)" class="btn btn-xs btn-danger "
+                                                                    type="button"><i class="fa fa-trash"></i>
+                                                            </button>
+                                                            &nbsp; &nbsp;
+                                                            <button (click)="removePic(url)" class="btn btn-xs btn-info "
+                                                                    type="button"><i class="fa fa-info"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="container">
+
+                    <h3>Charger des fichier : pdf ou word </h3>
+                    <div class="well" data-bind="fileDrag: multiFileData">
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <input (change)="onSelectPDF($event)" accept="application/msword, text/plain, application/pdf" formControlName="fichiers"
+                                       multiple
+                                       type='file'>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row with-forms">
+                    <div class="col-md-12">
+                        <label>Description</label>
+                        <textarea class="WYSIWYG" cols="40" formControlName="description" id="summary" name="summary" rows="3"
+                                  spellcheck="true"></textarea></div>
+                </div>
+
+                <div *ngIf="fGroup.controls['description'].invalid && (fGroup.controls['description'].dirty || fGroup.controls['description'].touched)">
+                    <div *ngIf="fGroup.controls['description'].errors.min">
+                        <p class="text-danger">La description doit contenir au moins 15 Charactères</p>
+                    </div>
+                    <div *ngIf="fGroup.controls['description'].errors.max">
+                        <p class="text-danger">La description doit exceder 1000 Charactères</p>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="comment-btn">
+                        <button class="btn-blue btn-red" href="#" type="submit">Enregistrer</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+        <!-- Row / End -->
+    </div>
+    <!-- Section / End -->
+
+
+</div>

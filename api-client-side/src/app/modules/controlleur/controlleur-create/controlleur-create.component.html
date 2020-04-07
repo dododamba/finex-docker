@@ -1,0 +1,59 @@
+<div class="content with-padding padding-bottom-10">
+
+    <!-- Section -->
+    <div class="add-listing-section">
+
+        <!-- Headline -->
+        <div class="add-listing-headline">
+            <h4 class="wither"><i class="sl sl-icon-doc"></i> Enregistrement <a class="button pull-right"
+                                                                                routerLink='/type-partenaire/list'><i
+                    class="fa fa-list"></i> List </a></h4>
+
+        </div>
+        <form (ngSubmit)="create()" [formGroup]="fGroup">
+
+            <!-- Title -->
+            <div class="row with-forms">
+                <div class="col-md-12">
+                    <label>Libellé <strong class="text-danger">(*)</strong> </label>
+                    <input class="search-field" formControlName="libelle" type="text">
+                </div>
+            </div>
+
+            <div *ngIf="fGroup.controls['libelle'].invalid && (fGroup.controls['libelle'].dirty || fGroup.controls['libelle'].touched)">
+                <div *ngIf="fGroup.controls['libelle'].errors.required">
+                    <p class="text-danger">Entrez un libellé</p>
+                </div>
+            </div>
+
+
+            <div class="row with-forms">
+                <div class="col-md-12">
+                    <label>Description</label>
+                    <textarea class="WYSIWYG" cols="40" formControlName="description" id="summary" name="summary" rows="3"
+                              spellcheck="true"></textarea></div>
+            </div>
+
+            <div *ngIf="fGroup.controls['description'].invalid && (fGroup.controls['description'].dirty || fGroup.controls['description'].touched)">
+                <div *ngIf="fGroup.controls['description'].errors.min">
+                    <p class="text-danger">La description doit contenir au moins 15 Charactères</p>
+                </div>
+                <div *ngIf="fGroup.controls['description'].errors.max">
+                    <p class="text-danger">La description doit exceder 1000 Charactères</p>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <div *ngIf="!fGroup.invalid" class="comment-btn">
+                    <button class="btn-blue btn-red" href="#" type="submit">Enregistrer</button>
+                </div>
+            </div>
+
+        </form>
+
+        <!-- Row / End -->
+    </div>
+    <!-- Section / End -->
+
+
+</div>

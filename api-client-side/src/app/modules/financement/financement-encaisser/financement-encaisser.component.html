@@ -1,0 +1,437 @@
+<form (ngSubmit)="submit()" [formGroup]="fGroup" enctype="multipart/form-data">
+
+    <div class="content with-padding padding-bottom-10">
+
+        <!-- Section -->
+        <div class="add-listing-section">
+
+            <!-- Headline -->
+            <div class="add-listing-headline">
+                <h4 class="wither"><i class="sl sl-icon-doc"></i> Encaisser <a class="button pull-right"
+                                                                               routerLink='/financements/list'><i
+                        class="fa fa-list"></i> List </a></h4>
+            </div>
+
+
+            <table class="col-md-12">
+                <tbody>
+
+      
+            <!--
+
+                              
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Nom du Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Numero du Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.numeroProjet }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Date De Debut : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.dateDebut }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Date butoire : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{projet.dateFin}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Budget Prévisionnel : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{projet.budgetPrevisionel}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Buget Réel : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{projet.budgetReel}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr *ngIf="projet.responsable">
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Responsable du Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong> {{projet.responsable.nom }} &nbsp; {{projet.responsable.prenom }} </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Caracteristiques techniques : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button class="button" type="button">Voir
+                                        ({{ projet.catarteristiqueTechniques.length }} )
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Controlleurs : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{projet.projetControlleur.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Etapes : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button class="button" type="button">Voir ({{projet.etapes.length }} )</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Partenaires : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{partenaires.nom}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Entreprise chargé d'execution du projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button class="button" type="button">Voir ({{projet.soumissionaires.length }})
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            -->
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Type de Financement : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{financement.typeFinancement.libelle}}</strong></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Montant Encaissé : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{financement.montantEncaisse}}</strong></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>  Montant restant : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{getMontant(financement.montantTotal, financement.montantEncaisse)}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Montant total à percevoir : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{financement.montantTotal}}</strong></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Partenaire : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{financement.partenaires[0].nom}}</strong></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Date de signature d'accord : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{financement.dateSignature}}</strong></div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <div *ngIf="financement.encaissements">
+                    <br>
+                    <legend> Derniers encaissements enregistrés :  {{financement.encaissements.length }} </legend>
+                    <br>
+
+                    <div class="container">
+
+
+                    
+                        <div class="center">
+    
+                            <table  class="basic-table booking-table table-responsive col-md-12">
+                                <thead>
+                                <tr>
+                                    <th>Date d'encaissement</th>
+                                    <th>Montant</th>
+                                    <th> Référence piece justificative</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let item of financement.encaissements">
+                                    <td>{{ item.dateEncaissement }}</td>
+                                    <td>{{ item.montant }}</td>
+                                    <td>{{ item.referencePieceJustificative }}</td>
+                                   
+                                </tr>
+                                </tbody>
+                            </table>
+    
+    
+                        </div>
+    
+    
+                    </div>
+
+
+
+                    
+                </div>
+
+
+                <br>
+
+                </tbody>
+            </table>
+
+
+            <!-- Title -->
+            <div class="jumbotron ">
+
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <h5>Montant <strong class="text-danger">(*)</strong></h5>
+                            <input class="with-border" formControlName="montant" type="number">
+                            <div *ngIf="fGroup.controls['montant'].invalid && (fGroup.controls['montant'].dirty || fGroup.controls['montant'].touched)">
+                                <div *ngIf="fGroup.controls['montant'].errors.required">
+                                    <p class="text-danger">Entrez le montant du financement !</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h5>Référence pièce justificative </h5>
+                            <input class="with-border" formControlName="referencePieceJustificative" type="text">
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <h5>Pièce </h5>
+                            <input class="with-border" formControlName="piece" type="file">
+                            
+                        </div>
+
+                        <div class="col-md-6">
+                            <h5>Date d'encaissement <strong class="text-danger">(*)</strong></h5>
+                            <input class="with-border" formControlName="dateEncaissement" type="date">
+                            <div *ngIf="fGroup.controls['dateEncaissement'].invalid && (fGroup.controls['dateEncaissement'].dirty || fGroup.controls['dateEncaissement'].touched)">
+                                <div *ngIf="fGroup.controls['dateEncaissement'].errors.required">
+                                    <p class="text-danger">Entrez la date d'encaissement !</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div *ngIf="!fGroup.invalid" class="comment-btn">
+
+                    <button class="button" style="background: green;color: #fff" type="submit">Enregistrer <i
+                            class="fa fa-save"></i></button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Row / End -->
+        </div>
+        <!-- Section / End -->
+
+
+    </div>
+</form>

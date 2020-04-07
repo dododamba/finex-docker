@@ -1,0 +1,140 @@
+<div class="dashboard-box margin-top-0 ">
+    <div class="headline">
+        <p class="text-danger">Les champs marqués par un ( <i class="text-danger glyphicon glyphicon-asterisk"></i>)
+            sont obligatoires !</p>
+    </div>
+    <!-- Nav tabs -->
+    <div>
+
+        <!-- Tab panes -->
+     
+        <div class="jumbotron">
+            <form (ngSubmit)="create()" [formGroup]="fGroup" enctype="multipart/form-data">
+                <div class="content with-padding padding-bottom-10">
+                    <div class="submit-field">
+                        <div class="col-xl-12">
+                            <label>Nom <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input class="search-field" formControlName="nom" placeholder="ex : Direction générale des impots"
+                                   type="text">
+    
+                            <div *ngIf="fGroup.controls['nom'].invalid && (fGroup.controls['nom'].dirty || fGroup.controls['nom'].touched)">
+                                <div *ngIf="fGroup.controls['nom'].errors.required">
+                                    <p class="text-danger">Entrez le libelle du projet !</p>
+                                </div>
+                            </div>
+    
+    
+                        </div>
+                    </div>
+    
+                    <div class="submit-field">
+    
+                        <!-- City -->
+                        <div class="col-xl-12">
+                            <label>Instituion ou Ministère de tutel </label>
+                            <select class="chosen-select-no-single" formControlName="institution">
+                                <option disabled>Selectioner une instituion</option>
+                                <option *ngFor="let item of institutions" value="{{item.slug}}"> {{ item.nom }}</option>
+                            </select>
+    
+                            <div *ngIf="fGroup.controls['institution'].invalid && (fGroup.controls['institution'].dirty || fGroup.controls['institution'].touched)">
+                                <div *ngIf="fGroup.controls['institution'].errors.required">
+                                    <p class="text-danger">Selectionez une institution !</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+    
+                    </div>
+    
+                  
+                    <fieldset>
+                        <legend>Information de l'employé responsable </legend>
+                        <div class="submit-field">
+    
+                            <!-- City -->
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Nom </label>
+                                        <input class="search-field" formControlName="nomEmploye" placeholder="Entrez le nom "
+                                   type="text">
+
+                                   <div *ngIf="fGroup.controls['nomEmploye'].invalid && (fGroup.controls['nomEmploye'].dirty || fGroup.controls['nomEmploye'].touched)">
+                                    <div *ngIf="fGroup.controls['nomEmploye'].errors.required">
+                                        <p class="text-danger">Entrez le nom de l'employé!</p>
+                                    </div>
+                                </div>
+                
+                                    </div>
+        
+                                    <div class="col-md-6">
+                                        <label>Prénom </label>
+                                        
+                                        <input class="search-field" formControlName="prenomEmploye" placeholder="Entrez le prenom"
+                                        type="text">
+
+                                        <div *ngIf="fGroup.controls['prenomEmploye'].invalid && (fGroup.controls['prenomEmploye'].dirty || fGroup.controls['prenomEmploye'].touched)">
+                                            <div *ngIf="fGroup.controls['prenomEmploye'].errors.required">
+                                                <p class="text-danger">Entrez le prenom de l'employé !</p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-12">
+                                <label>Email  </label>
+                                <input class="search-field" formControlName="emailEmploye" placeholder="ex : mbina@post.ga"
+                                   type="email">
+
+
+                                   <div *ngIf="fGroup.controls['emailEmploye'].invalid && (fGroup.controls['emailEmploye'].dirty || fGroup.controls['emailEmploye'].touched)">
+                                    <div *ngIf="fGroup.controls['emailEmploye'].errors.required">
+                                        <p class="text-danger">Entrez l'adresse email de l'employé !</p>
+                                    </div>
+                                </div>
+
+        
+                            </div>
+        
+                        </div>
+
+
+                    </fieldset>
+    
+    
+                    <div class="row with-forms">
+                        <div class="col-md-12">
+                            <label>Description</label>
+                            <textarea class="WYSIWYG" cols="40" formControlName="description" id="summary" name="summary" rows="3"
+                                      spellcheck="true"></textarea></div>
+                    </div>
+
+
+                    <div class="col-xs-12">
+                        <div class="row">
+
+                        <button *ngIf="!fGroup.invalid" class="button ripple-effect big margin-top-30"  type="submit" style="color: #fff;background: #09d1b6;">Enregistrer</button> &nbsp; 
+                        <button class="button ripple-effect big margin-top-30" type="button" (click)="goToListe()"> Liste</button>
+                        </div>
+                    </div>
+
+
+
+                   
+    
+    
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+
+</div>
+

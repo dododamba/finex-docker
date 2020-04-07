@@ -1,0 +1,118 @@
+<div id="">
+
+    <div class="headline">
+        <h2> Etapes du projet :  {{ projet.nom }}  <a class="button pull-right"
+                                                                 routerLink='/projets/{{slug}}'><i
+                class="fa fa-list"></i> << Retour </a></h2>
+    </div>
+
+    <div>
+        <div class="jumbotron">
+            <table class="col-md-12">
+                <tbody>
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Nom du Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Numero du Projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ projet.numeroProjet }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Responsable du projet : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong> {{projet.responsable.nom }} &nbsp; {{projet.responsable.prenom }} </strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <br><br>
+
+                <div class="container table-box">
+                    <div class="headline"><i class="fa fa-list"></i> <strong class="text-success"> Phases
+                        :</strong>
+                        <button (click)='create()' class="button pull-right"><i class="fa fa-plus"></i> Ajouter
+                        </button>
+                    </div>
+                    <table class="basic-table booking-table">
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                                <th>Cout</th>
+                                <th>Date Debut</th>
+                                <th>Date Fin</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of projet.etapes">
+                            <td>{{ item.nom }}</td>
+                            <td>{{ item.cout }}</td>
+                            <td>{{ item.dateDebut }}</td>
+                            <td>{{ item.dateFin }}</td>
+                            <td>{{ item.description | slice:0:35 }}</td>
+                            <td class="btn-group">
+                                <button (click)="show(item.slug)" class="btn btn-xs btn-info"><i
+                                        class="icon-feather-eye"></i></button>&nbsp;
+                                <button (click)="delete(item.slug)" class="btn btn-xs btn-danger"><i
+                                        class="icon-feather-trash"></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+    
+                    <br>
+                    <br>
+                </div>
+
+                <br>
+
+                </tbody>
+            </table>
+            <div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<router-outlet></router-outlet>

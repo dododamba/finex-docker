@@ -1,0 +1,104 @@
+<div class="content with-padding padding-bottom-10">
+
+    <div class="col-xl-12 col-md-12">
+        <button class="button  ripple-effect" type="button" (click)="selectParameter(true)">Nouveau partenaire</button>  &nbsp; &nbsp; &nbsp;
+
+        <button class="button ripple-effect" type="button" (click)="selectParameter(false)">Selectioner un partenaire</button>
+    </div>
+
+    <br>
+
+
+    <div *ngIf="selectParam.select">
+        <form (ngSubmit)="formSelect()" [formGroup]="fGroup">
+
+            <!-- Section -->
+            <div class="add-listing-section">
+    
+                <!-- Headline -->
+                <div class="add-listing-headline">
+                    <h4 class="wither"><i class="sl sl-icon-doc"></i> Selectionner </h4>
+    
+                </div>
+    
+                <br> <br> 
+                <!-- Title -->
+               
+                <div class="jumbotron">
+                   
+                    <div class="row with-forms">
+                        <div class="col-md-12">
+                            <label>Partenaires <strong class="text-danger">(*)</strong> </label>
+                            <select class="chosen-select-no-single" formControlName="partenaire" (change)="addToArray($event.target.value)" multiple>
+                                <option *ngFor="let item of partenaires" value="{{ item.slug }}">{{ item.nom }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="col-xs-12">
+                <div *ngIf="!fGroup.invalid" class="comment-btn">
+                    <button class="button preview" href="#" type="submit">Enregistrer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div  *ngIf="selectParam.input">
+        <form (ngSubmit)="formInput()" [formGroup]="gGroup">
+
+            <!-- Section -->
+            <div class="add-listing-section">
+    
+                <!-- Headline -->
+                <div class="add-listing-headline">
+                    <h4 class="wither"><i class="sl sl-icon-doc"></i> Enregistrement </h4>
+    
+                </div>
+    
+                <br> <br> 
+                <!-- Title -->
+               
+                <div class="jumbotron">
+                    <div class="row with-forms">
+                        <div class="col-md-12">
+                            <label>Nom <strong class="text-danger">(*)</strong> </label>
+                            <input class="search-field" formControlName="nom" type="text">
+                        </div>
+        
+                        <div *ngIf="fGroup.controls['nom'].invalid && (fGroup.controls['nom'].dirty || fGroup.controls['nom'].touched)">
+                            <div *ngIf="fGroup.controls['nom'].errors.required">
+                                <p class="text-danger">Entrez le nom du Partenaire</p>
+                            </div>
+                        </div>
+        
+                    </div>
+        
+                    <div class="row with-forms">
+                        <div class="col-md-12">
+                            <label>Type Partenaire <strong class="text-danger">(*)</strong> </label>
+                            <select class="chosen-select-no-single" formControlName="typePartenaire">
+                                <option *ngFor="let item of typePartenaires" value="{{ item.slug }}">{{ item.libelle }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="col-xs-12">
+                <div *ngIf="!fGroup.invalid" class="comment-btn">
+                    <button class="button preview" href="#" type="submit">Enregistrer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<!-- Row / End -->
+<!-- Section / End -->
+
+
+
+
+

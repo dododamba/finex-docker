@@ -1,0 +1,181 @@
+<div id="">
+
+    <div class="headline">
+        <h2> #   {{ etape.nom }}  <a class="button pull-right"
+                                                                 ><i
+                class="fa fa-list"></i> << Retour </a></h2>
+    </div>
+
+    <div>
+        <div class="jumbotron">
+            <table class="col-md-12">
+                <tbody>
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Libellé : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{ etape.nom }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Date de debut : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{etape.dateDebut}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Date de fin : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{etape.dateFin}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Cout : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{etape.cout}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Description : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <strong>{{etape.description}}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+
+
+                <br><br>
+
+              
+
+                <div class="container">
+
+                    <h3 class="text-info">Liste des Taches</h3> 
+                    <button type="button" (click)="create()" class="button pull-right" routerLink='/etapes/create'><i
+                       class="fa fa-plus"></i> Ajouter
+                    </button>
+
+                    <br>
+                    <br>
+                    
+                    <div class="center">
+                        
+                        
+                       
+        
+                       
+
+
+                        <table *ngIf="etape.taches" class="basic-table booking-table table-responsive col-md-12">
+                            <thead>
+                            <tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Libéllé</th>
+                                    <th>Date de Creation</th>
+                                    <th>Date de debut</th>
+                                    <th>Date de fin</th>
+                                    <th>Priorité</th>
+                                    <th>Cout</th>
+                                    <th>Executant</th>
+                                    <th>Crée Par</th>
+                                    <th>Projet</th>
+                                    <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let item of etape.taches">
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.createdAt }}</td>
+                                <td>{{ item.dateDebut }}</td>
+                                <td>{{ item.dateFin }}</td>
+                                <td>{{ item.priorite[0].libelle }}, ...</td>
+                                <td>{{item.cout}}</td>
+                                <td>{{ item.exceuteur[0].nom }} ,...</td>
+                                <td>{{ item.planificateur.nom }} {{ item.planificateur.prenom }}</td>
+                                
+                                <td>{{ item.description | slice:0:35 }}</td>
+
+                                <td class="btn-group">
+                                    <button (click)="show(item.slug)" class="btn btn-xs btn-info"><i
+                                            class="icon-feather-eye"></i></button>&nbsp;
+                                    <button (click)="edit(item.slug)" class="btn btn-xs btn-warning"><i
+                                            class="icon-line-awesome-edit"></i></button>&nbsp;
+                                    <button (click)="delete(item.slug)" class="btn btn-xs btn-danger"><i
+                                            class="icon-feather-trash"></i></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <br>
+
+                </tbody>
+            </table>
+            <div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<router-outlet></router-outlet>
