@@ -37,7 +37,6 @@ import com.technomegapartners.finex.util.Slugger;
  *
  */
 @RestController
-@RequestMapping(consumes = { MediaType.APPLICATION_JSON_VALUE })
 
 public class InitAdminController {
 	private TypePartenaireDAO typePartenaireDAO;
