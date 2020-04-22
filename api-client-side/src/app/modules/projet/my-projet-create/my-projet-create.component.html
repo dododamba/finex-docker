@@ -22,7 +22,8 @@
             <div class="col-xl-12 col-md-12">
                 <button class="button ripple-effect" type="button" (click)="changeStep(1)">Project</button> &nbsp; &nbsp; &nbsp;
                 <button class="button  ripple-effect" type="button" (click)="changeStep(2)">Caractéristique techniques</button> &nbsp; &nbsp; &nbsp;
-                <button class="button  ripple-effect" type="button" (click)="changeStep(3)">Résumé</button>
+                <button class="button  ripple-effect" type="button" (click)="changeStep(3)">Objectifs</button> &nbsp; &nbsp; &nbsp;
+                <button class="button  ripple-effect" type="button" (click)="changeStep(4)">Résumé</button>
             </div>
     
             <br>
@@ -214,21 +215,7 @@
 
                         </div>
 
-                        <div class="row submit-field">
-                            <div class="col-xl-12">
-                                <label>Objectifs et contenu du projet </label>
-                                <textarea class="WYSIWYG" formControlName="description"
-                                          spellcheck="true"></textarea>
-
-                                <div *ngIf="fGroup.controls['description'].invalid && (fGroup.controls['description'].dirty || fGroup.controls['description'].touched)">
-                                    <div *ngIf="fGroup.controls['description'].errors.required">
-                                        <p class="text-danger">Entrez une description !</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
+                
                     </fieldset>
 
 
@@ -364,6 +351,76 @@
             </div>
 
             <div class="tab" *ngIf="thirdStep">
+
+                <div class="add-listing-section">
+
+                    <!-- Headline -->
+                    <div class="add-listing-headline">
+                        <h3><i class="sl sl-icon-doc"></i> Objectifs du projet </h3>
+                    </div>
+
+                    <div class="row ">
+
+
+                        <div class="col-xl-4">
+                            <label>Libéllé <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input class="search-field" formControlName="libelleObjectif" type="text">
+                        </div>
+
+                        <div class="col-xl-4">
+                            <label>Indicateur <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input class="search-field" formControlName="indicateur" type="text">
+                        </div>
+
+
+                        <div class="col-xl-4">
+                            <label>Contenu <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                            <input class="search-field" formControlName="contenu" type="text">
+
+                        </div>
+
+                    
+                        
+                      
+                    </div>
+
+
+                        <button (click)="addObjectif(fGroup.value.libelleObjectif,fGroup.value.contenu,fGroup.value.indicateur)"
+                        class="button"
+                        type="button">Ajouter
+                       </button>
+                   
+                    <br><br>
+
+
+
+
+                    <div class="container table-box">
+                    
+                        <table class="basic-table booking-table">
+                            <thead>
+                            <tr>
+                                <th>Libellé</th>
+                                <th>Contenu</th>
+                                <th>Indicateur</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let item of objectifs">
+                                <td>{{ item.libelle }}</td>
+                                <td>{{ item.contenu }}</td>
+                                <td>{{ item.indicateur }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                    </div>           
+                    <br>
+                </div>
+            </div>
+
+
+            <div class="tab" *ngIf="fourthStep">
                 <h3>Résumé des Informations saisies</h3>
 
                 <table class="col-xl-12">

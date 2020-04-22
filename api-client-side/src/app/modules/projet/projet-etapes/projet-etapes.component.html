@@ -78,6 +78,7 @@
                                 <th>Date Debut</th>
                                 <th>Date Fin</th>
                                 <th>Description</th>
+                                <th>Livrables</th>
                                 <th>Action</th>
                         </tr>
                         </thead>
@@ -88,6 +89,11 @@
                             <td>{{ item.dateDebut }}</td>
                             <td>{{ item.dateFin }}</td>
                             <td>{{ item.description | slice:0:35 }}</td>
+                            <td>
+                                <button class="button" type="button" (click)="goToControle(projet.slug)">Voir
+                                    ({{item.livrables.length }} )
+                                </button>
+                            </td>
                             <td class="btn-group">
                                 <button (click)="show(item.slug)" class="btn btn-xs btn-info"><i
                                         class="icon-feather-eye"></i></button>&nbsp;

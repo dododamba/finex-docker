@@ -28,6 +28,7 @@
     "moment": "2.24.0",
     "mydatepicker": "2.6.6",
     "ng2-charts": "^2.3.0",
+    "ng2-search-filter" : "0.5.1",
     "ng2-pdf-viewer": "6.0.2",
     "ng4-loading-spinner": "1.2.3",
     "rxjs": "~6.4.0",

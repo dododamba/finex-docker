@@ -367,14 +367,36 @@
                     </td>
                 </tr>
 
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p>Objectifs : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button class="button" type="button" (click)="goToControle(projet.slug)">Voir
+                                        ({{projet.objectifs.length }} )
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+
                 <tr></tr>
                 <br>
                 <br>
                 </tbody>
             </table>
-            <div>
-                <div class="form-title form-title-1">
-                    &nbsp; &nbsp; <p><strong>Objet du Projet</strong></p>
+
+             <div>
+                <div class="form-title form-title-1 ml-4">
+                    <p> <strong>Objet du Projet</strong></p>
                 </div>
                 <div class="container jumbotron  scroll">
                     <p>
@@ -385,12 +407,12 @@
 
             </div>
 
-            <button (click)="gotToEdit(projet.slug)" class="button button-sliding-icon ripple-effect  ">Mettre à
+            &nbsp; &nbsp; <button (click)="gotToEdit(projet.slug)" class="button button-sliding-icon ripple-effect  ">Mettre à
                 jours
             </button> &nbsp; &nbsp;
             <button (click)="goTOFinance(projet.slug)" class="button button-sliding-icon ripple-effect ">Bilan
                 Financier
-            </button> &nbsp; &nbsp;
+            </button> <br> <br>
            <!--
                 <button (click)="goToRealisation(projet.slug)" class="button button-sliding-icon ripple-effect  ">
                 Réalisations

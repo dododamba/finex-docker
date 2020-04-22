@@ -43,9 +43,13 @@ export class MyProjetCreateComponent implements OnInit {
 
     fGroup: FormGroup;
     public caracteristique: boolean;
+    public objectif: boolean;
+
     public firstStep: boolean;
     public secondStep: boolean;
     public thirdStep: boolean;
+    public fourthStep: boolean;
+
     public maitreDoeuvrage: string;
     public partenaires: IPartenaire[];
     public employes: IEmploye[];
@@ -64,6 +68,7 @@ export class MyProjetCreateComponent implements OnInit {
     ];
     env = environment;
     public caracteristiqueTechniques: any = [];
+    public objectifs: any = [];
     public regionProjets: any = [];
     public model: any = {date: {year: 2018, month: 10, day: 9}};
     private maitreOeuvrage: string;
@@ -113,21 +118,38 @@ export class MyProjetCreateComponent implements OnInit {
             this.firstStep = true;
             this.secondStep = false;
             this.thirdStep= false;
+            this.fourthStep= false;
+
         }else if(step == 2){
 
             this.firstStep = false;
             this.secondStep = true;
             this.thirdStep= false;
+            this.fourthStep= false;
+
         }else if(step == 3){
 
             this.firstStep = false;
             this.secondStep = false;
             this.thirdStep= true;
-        } else{
+            this.fourthStep= false;
+
+        }
+        else if(step == 4){
+
+            this.firstStep = false;
+            this.secondStep = false;
+            this.thirdStep= false;
+            this.fourthStep= true;
+
+        }
+        else{
 
             this.firstStep = true;
             this.secondStep = false;
             this.thirdStep= false;
+            this.fourthStep= false;
+
         }
     }
 
@@ -184,6 +206,13 @@ export class MyProjetCreateComponent implements OnInit {
                 nature: [''],
                 libelle: [''],
                 region: [''],
+
+                contenu: [''],
+                indicateur: [''],
+                libelleObjectif: [''],
+
+
+
                 soumissionaire: [''],
                 typeMarche: [''],
                 addToMaitreOeuvrade: [''],
@@ -225,6 +254,18 @@ export class MyProjetCreateComponent implements OnInit {
         this.caracteristique = true;
         this.caracteristiqueTechniques.push(caracteristiqueTechniques);
     }
+
+
+    addObjectif(libelleD: string, contenu: any, indicateur: string) {
+        const objectifs = {
+            libelle: libelleD,
+            contenu: contenu,
+            indicateur: indicateur
+        };
+        this.objectif = true;
+        this.objectifs.push(objectifs);
+    }
+
 
   
 
@@ -370,6 +411,7 @@ export class MyProjetCreateComponent implements OnInit {
             soumissionaire: soumissionaire, 
             maitreDoeuvrage  :  this.maitreDoeuvrage, 
             caracteristiqueTechniques: this.caracteristiqueTechniques, 
+            objectifs: this.objectifs,
             secteur: secteur,
             controllleur : controlleur,
             typeMarche: typeMarche,

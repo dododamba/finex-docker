@@ -42,6 +42,10 @@ import { ProjetControleCreateComponent } from './projet-controle-create/projet-c
 import { ProjetCarateristiqueComponent } from './projet-carateristique/projet-carateristique.component';
 import { ProjetCarateristiqueCreateComponent } from './projet-carateristique-create/projet-carateristique-create.component';
 import { ProjetCarateristiqueShowComponent } from './projet-carateristique-show/projet-carateristique-show.component';
+import { ProjetEtapeLivrableListComponent } from './projet-etape-livrable-list/projet-etape-livrable-list.component';
+import { ProjetEtapeLivrableCreateComponent } from './projet-etape-livrable-create/projet-etape-livrable-create.component';
+import { ProjetEtapeObjectifComponent } from './projet-etape-objectif/projet-etape-objectif.component';
+import { ProjetEtapeObjectifCreateComponent } from './projet-etape-objectif-create/projet-etape-objectif-create.component';
 
 @NgModule({
     declarations: [
@@ -76,7 +80,11 @@ import { ProjetCarateristiqueShowComponent } from './projet-carateristique-show/
         ProjetControleCreateComponent,
         ProjetCarateristiqueComponent,
         ProjetCarateristiqueCreateComponent,
-        ProjetCarateristiqueShowComponent
+        ProjetCarateristiqueShowComponent,
+        ProjetEtapeLivrableListComponent,
+        ProjetEtapeLivrableCreateComponent,
+        ProjetEtapeObjectifComponent,
+        ProjetEtapeObjectifCreateComponent
     ],
     imports: [
         CommonModule, 
