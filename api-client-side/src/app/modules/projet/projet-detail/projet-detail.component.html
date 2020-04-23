@@ -1,4 +1,4 @@
-<div id="">
+<div >
 
     <div class="headline">
         <h2> Detail du projet {{ projet.nom }}  <a class="button pull-right"
@@ -6,8 +6,8 @@
                 class="fa fa-list"></i> Liste </a></h2>
     </div>
 
-    <div>
-        <div>
+    <div >
+        <div >
             <table class="col-md-12">
                 <tbody>
 
@@ -180,23 +180,6 @@
                 </tr>
 
 
-                <tr>
-                    <td>
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <p> Caracteristiques techniques : </p>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <button  class="button" type="button">Voir
-                                        ({{ projet.catarteristiqueTechniques.length }} )
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
 
                 <tr>
                     <td>
@@ -284,6 +267,26 @@
                         </div>
                     </td>
                 </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p> Caracteristiques techniques : </p>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button  class="button" type="button" (click)="goToCaracteristique(projet.slug)">Voir
+                                        ({{ projet.catarteristiqueTechniques.length }} )
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
 
 
                 <tr>

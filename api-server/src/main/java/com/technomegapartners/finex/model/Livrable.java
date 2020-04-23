@@ -1,31 +1,35 @@
-/**
- * 
- */
 package com.technomegapartners.finex.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * @author dominique
+ * @author DOMINIQUE DAMBA
  *
  */
 
 @Entity
-@Table(name = "tb_tmp_finex_objectifs")
-
-public class Objectif implements Serializable {
+@Table(name = "tb_tmp_finex_livrables", uniqueConstraints = { @UniqueConstraint(columnNames = { "libelle" }) })
+public class Livrable implements Serializable {
 	/**
 	 * 
 	 */
@@ -35,15 +39,16 @@ public class Objectif implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
-	@Column(length = 10000)
-	private String contenu;
-	private String indicateur;
-	private boolean indicateurVlide;
-	@ManyToOne
-	@JsonIgnore
-	private Projet projet;
-	
-	
+	private Date dateLivraison;
+
+	@Column(length = 5000)
+	private String description;
+
+
+    @ManyToOne
+    @JsonIgnore
+    private Etape etape;
+
 	private String slug;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
@@ -52,24 +57,16 @@ public class Objectif implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date deletedAt;
 	
-	public Objectif() {
+	
+	public Livrable() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param libelle
-	 * @param contenu
-	 * @param projet
-	 * @param slug
-	 * @param createdAt
-	 * @param updatedAt
-	 * @param deletedAt
-	 */
-	public Objectif(String libelle, String contenu, Projet projet, String slug, Date createdAt, Date updatedAt,
-			Date deletedAt) {
+	public Livrable(String libelle, String description, String slug, Date createdAt,
+			Date updatedAt, Date deletedAt) {
+		super();
 		this.libelle = libelle;
-		this.contenu = contenu;
-		this.projet = projet;
+		this.description = description;
 		this.slug = slug;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
@@ -104,33 +101,37 @@ public class Objectif implements Serializable {
 		this.libelle = libelle;
 	}
 
-	/**
-	 * @return the contenu
+    
+    /**
+	 * @return the dateLivraison
 	 */
-	public String getContenu() {
-		return contenu;
+	public Date getDateLivraison() {
+		return dateLivraison;
 	}
 
 	/**
-	 * @param contenu the contenu to set
+	 * @param dateLivraison the dateLivraison to set
 	 */
-	public void setContenu(String contenu) {
-		this.contenu = contenu;
+	public void setDateLivraison(Date dateLivraison) {
+		this.dateLivraison = dateLivraison;
+    }
+    
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
 	}
 
 	/**
-	 * @return the projet
+	 * @param description the description to set
 	 */
-	public Projet getProjet() {
-		return projet;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	/**
-	 * @param projet the projet to set
-	 */
-	public void setProjet(Projet projet) {
-		this.projet = projet;
-	}
+	
 
 	/**
 	 * @return the slug
@@ -188,23 +189,22 @@ public class Objectif implements Serializable {
 		this.deletedAt = deletedAt;
 	}
 
-	public String getIndicateur() {
-		return indicateur;
-	}
-
-	public void setIndicateur(String indicateur) {
-		this.indicateur = indicateur;
-	}
-
-	public boolean isIndicateurVlide() {
-		return indicateurVlide;
-	}
-
-	public void setIndicateurVlide(boolean indicateurVlide) {
-		this.indicateurVlide = indicateurVlide;
-	}
 	
-	
+
+    
+    /**
+	 * @return the Etape
+	 */
+	public Etape getEtape() {
+		return etape;
+	}
+
+	/**
+	 * @param Etape the Etape to set
+	 */
+	public void setEtape(Etape etape) {
+		this.etape = etape;
+	}
 	
 
 }

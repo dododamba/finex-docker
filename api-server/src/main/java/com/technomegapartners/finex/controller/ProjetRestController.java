@@ -55,6 +55,9 @@ import com.technomegapartners.finex.request.ProjetCreateRequest;
 import com.technomegapartners.finex.response.JsonObjectResponse;
 import com.technomegapartners.finex.services.StorageService;
 import com.technomegapartners.finex.util.Slugger;
+import com.technomegapartners.finex.model.Objectif;
+import com.technomegapartners.finex.repository.ObjectifRepository;
+
 
 @RestController
 @RequestMapping(consumes = { MediaType.APPLICATION_JSON_VALUE })
@@ -77,6 +80,7 @@ public class ProjetRestController {
 	private MaitreDoeuvreDelegueDAO maitreDoeuvreDelegueDAO;
 	private TypeMarcheDAO typeMacheDAO;
 	private RegionDAO regionDAO;
+	private ObjectifRepository objectifRepo;
 
 	@Autowired
 	public ProjetRestController(PartenaireDAO partenaireDAO, EmployeDao employeDao, ProjetDAO projetDAO,
@@ -85,7 +89,7 @@ public class ProjetRestController {
 			ProjetControlleurDAO projetControlleurDAO, EmployeRepository employeR,
 			CatacteristiqueTechniqueDAO catacteristiqueTechniqueDAO, InstitutionDAO institutionDAO,
 			CatarteristiqueTechniqueRepository catacteristiqueTechniqueRepo,
-			MaitreDoeuvreDelegueDAO maitreDoeuvreDelegueDAO, TypeMarcheDAO typeMacheDAO, RegionDAO regionDAO) {
+			MaitreDoeuvreDelegueDAO maitreDoeuvreDelegueDAO, TypeMarcheDAO typeMacheDAO, RegionDAO regionDAO,ObjectifRepository objectifRepo) {
 		this.partenaireDAO = partenaireDAO;
 		this.employeDao = employeDao;
 		this.projetDAO = projetDAO;
@@ -104,6 +108,7 @@ public class ProjetRestController {
 		this.maitreDoeuvreDelegueDAO = maitreDoeuvreDelegueDAO;
 		this.typeMacheDAO = typeMacheDAO;
 		this.regionDAO = regionDAO;
+		this.objectifRepo = objectifRepo;
 	}
 
 	@GetMapping("/api/projet/no-pagination")
@@ -316,6 +321,7 @@ public class ProjetRestController {
 		// String[] soumissionaireR = request.getSoumissionaire();
 		String maitreDoeuvrageR = request.getMaitreDoeuvrage();
 		CatarteristiqueTechnique[] caraTechniques = request.getCaracteristiqueTechniques();
+		Objectif[] objectifs = request.getObjectifs();
 		Set<MaitreDoeuvre> maitreDoeuvres = new HashSet<MaitreDoeuvre>();
 		// MaitreDouvrage maitreDouvrage = new MaitreDouvrage();
 		Employe employe = employeDao.showBySlug(request.getResponsable());
@@ -437,23 +443,72 @@ public class ProjetRestController {
 		projetDAO.store(projet);
 		groupeTravailDAO.store(groupeTravail);
 
-		/**
-		 * 
-		 * if (caraTechniques != null) { Set<CatarteristiqueTechnique>
-		 * catarteristiqueTechniques = new HashSet<CatarteristiqueTechnique>(); for
-		 * (CatarteristiqueTechnique caraT : caraTechniques) {
-		 * caraT.setSlug(Slugger.createSlug(caraT.getLibelle())); caraT.setCreatedAt(new
-		 * Date()); caraT.setUpdatedAt(new Date()); caraT.setProjet(projet);
-		 * catacteristiqueTechniqueDAO.store(caraT); //
-		 * catarteristiqueTechniques.add(caraT); } //
-		 * catacteristiqueTechniqueRepo.saveAll(catarteristiqueTechniques); //
-		 * projet.getCatarteristiqueTechniques().addAll(catarteristiqueTechniques); }
-		 */
+		
+		 
+		 if (caraTechniques != null) { 
+			 Set<CatarteristiqueTechnique> catarteristiqueTechniques = new HashSet<CatarteristiqueTechnique>(); 
+			  for (CatarteristiqueTechnique caraT : caraTechniques) {
+					 caraT.setSlug(Slugger.createSlug(caraT.getLibelle())); 
+					 caraT.setCreatedAt(new Date()); 
+					 caraT.setUpdatedAt(new Date()); 
+					 caraT.setProjet(projet);
+					 catacteristiqueTechniqueDAO.store(caraT);
+					 catarteristiqueTechniques.add(caraT); 
+				} 
+			 catacteristiqueTechniqueRepo.saveAll(catarteristiqueTechniques);
+			 projet.getCatarteristiqueTechniques().addAll(catarteristiqueTechniques); 
+			}
+
+			if(objectifs != null){
+
+				 Set<Objectif> objectifsProjet = new HashSet<Objectif>();
+				 for(Objectif obj : objectifs){
+					obj.setSlug(Slugger.createSlug(obj.getLibelle())); 
+					obj.setCreatedAt(new Date()); 
+					obj.setUpdatedAt(new Date()); 
+					obj.setProjet(projet);
+					objectifRepo.save(obj);
+					objectifsProjet.add(obj);
+				 }
+
+				 objectifRepo.saveAll(objectifsProjet);
+				 projet.getObjectifs().addAll(objectifsProjet);
+			}
+		
 
 		objMap.put("projet", projet);
 		// objMap.put("catarteristiqueTechniques", catacteristiqueTechniques);
 
 		return ResponseEntity.ok(new JsonObjectResponse(true, "Projet ajouté avec succès", objMap));
 	}
+
+	@PostMapping("/add-caracteristiques")
+	public  ResponseEntity<?>   addCaracteristiques(CaracteristiqueToProjectRequest request){
+	  
+		Projet projet = projetDAO.showBySlug(request.getProjetSlug()).get();
+		CatarteristiqueTechnique[] caraTechniques = request.getCaracteristiqueTechniques();
+
+
+		if (caraTechniques != null) { 
+			Set<CatarteristiqueTechnique> catarteristiqueTechniques = new HashSet<CatarteristiqueTechnique>(); 
+			 for (CatarteristiqueTechnique caraT : caraTechniques) {
+					caraT.setSlug(Slugger.createSlug(caraT.getLibelle())); 
+					caraT.setCreatedAt(new Date()); 
+					caraT.setUpdatedAt(new Date()); 
+					caraT.setProjet(projet);
+					catacteristiqueTechniqueDAO.store(caraT);
+					catarteristiqueTechniques.add(caraT); 
+			   } 
+			catacteristiqueTechniqueRepo.saveAll(catarteristiqueTechniques);
+			projet.getCatarteristiqueTechniques().addAll(catarteristiqueTechniques); 
+		   }
+
+
+		   return ResponseEntity.ok(new JsonObjectResponse(true, "Caracteristiques ajoutés avec succès", objMap));
+	
+	
+		}
+
+
 
 }

@@ -1,1 +1,104 @@
-<p>projet-carateristique-create works!</p>
+<div class="dashboard-box margin-top-0 ">
+    <div class="headline">
+       
+     <div class="dashboard-headline">
+            <h4 class="wither">
+                <strong><i class="sl sl-icon-doc"></i> Caracteriques techniques </strong>
+                <a class="button pull-right"
+                   routerLink='/taches/list'><i
+                        class="fa fa-list"></i> Liste </a></h4>
+
+        </div>
+    </div>
+    <!-- Nav tabs -->
+    <div>
+
+        <!-- Tab panes -->
+        <form (ngSubmit)="submit()" [formGroup]="fGroup" enctype="multipart/form-data">
+            <div class="content with-padding padding-bottom-10">
+                <div class="jumbotron">
+                    
+
+
+                    <div class="add-listing-section">
+
+                        <!-- Headline -->
+                        
+                        <div class="row ">
+    
+    
+                            <div class="col-xl-5">
+                                <label>Libéllé <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                <input class="search-field" formControlName="libelle" type="text">
+                            </div>
+    
+                            <div class="col-xl-2">
+                                <label>Nature <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                <select class="chosen-select-no-single" formControlName="nature">
+                                    <option disabled>Selectioner une valeur</option>
+                                    <option *ngFor="let item of natures" value="{{item}}"> {{ item }}
+                                </select>
+                            </div>
+    
+                            <div *ngIf="isDate(fGroup.value.nature);" class="col-xl-5">
+                                <label>Valeur <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                <input class="search-field" formControlName="valeur" type="date">
+                            </div>
+                            <div *ngIf="!isDate(fGroup.value.nature);" class="col-xl-5">
+                                <label>Valeur <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                <input class="search-field" formControlName="valeur" type="text">
+                            </div>
+                        </div>
+    
+                        <br>
+                        <button (click)="addCaracTechnique(fGroup.value.libelle,fGroup.value.valeur,fGroup.value.nature)"
+                                class="button"
+                                type="button">Ajouter
+                        </button>
+                        <br><br><br><br>
+    
+    
+    
+    
+                        <div class="container table-box">
+                        
+                            <table class="basic-table booking-table">
+                                <thead>
+                                <tr>
+                                    <th>Libellé</th>
+                                    <th>Nature</th>
+                                    <th>Valeur</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let item of caracteristiqueTechniques">
+                                    <td>{{ item.libelle }}</td>
+                                    <td>{{ item.nature }}</td>
+                                    <td>{{ item.valeur }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                        </div>           
+                        <br>
+                    </div>
+
+
+                    <div>
+
+                        <button class="button ripple-effect big margin-top-30" style="background: #139469;color: #fff"
+                                type="submit">Enregistrer <i
+                                class="fa fa-save"></i></button> &nbsp;
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+
+
+    </div>
+
+
+</div>
+

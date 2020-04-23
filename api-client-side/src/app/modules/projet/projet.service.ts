@@ -62,8 +62,10 @@ export class ProjetService {
     }
 
     addMaitreDeouvre(maitreDeouvre: any) {
-
         return this.http.post(this.resourceUrl + '/create/own-projet', maitreDeouvre, headers);
+    }
 
+    addCaracteristiques(caracteristiques : any){
+      return this.http.post(this.resourceUrl + '/add-caracteristiques', caracteristiques, headers);    
     }
 }
