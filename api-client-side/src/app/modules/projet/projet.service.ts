@@ -68,4 +68,8 @@ export class ProjetService {
     addCaracteristiques(caracteristiques : any){
       return this.http.post(this.resourceUrl + '/add-caracteristiques', caracteristiques, headers);    
     }
+
+    addObjectifs(obectifs : any){
+        return this.http.post(this.resourceUrl + '/add-objectifs', obectifs, headers);    
+      }
 }

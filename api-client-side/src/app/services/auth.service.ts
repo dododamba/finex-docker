@@ -3,6 +3,7 @@ import {environment} from 'src/environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {ConnectedUser} from '../models/connected-user';
+import Swal from 'sweetalert2';
 
 const headers = {
     headers: new HttpHeaders({'Content-Type': 'application/json', 'Cache-Control': 'no-cache'})
@@ -31,6 +32,10 @@ export class AuthService {
 
         this.http.post(this.env.baseUrl + 'auth/login', data, headers).subscribe(
             (res: any) => {
+               if(res.status == 401 ){
+                Swal.fire('Echec !','Echec d\'authentification, veuillez réessayer !','error')
+               }else{
+
                 this.connectedUser = {
                     userId: res._embeded.user.id,
                     avatar: res._embeded.user.avatar,
@@ -46,19 +51,18 @@ export class AuthService {
                 localStorage.setItem(this.env.TOKEN_KEY, this.connectedUser.accessToken);
 
                 this.router.navigateByUrl('workgroups/list');
+
+               }
             }
         );
     }
 
 
     public logout() {
-        localStorage.removeItem(this.env.CONNECTED_USER);
-        localStorage.removeItem(this.env.TOKEN_KEY);
-        localStorage.removeItem(this.env.TOKEN_TYPE);
-        localStorage.removeItem('role');
-
+        this.clearStorage();
         this.router.navigateByUrl('login');
     }
+
 
 
     public sessionExists() {
@@ -69,4 +73,12 @@ export class AuthService {
         return localStorage.getItem(this.env.CONNECTED_USER) == token;
     }
 
+
+    clearStorage(){
+        localStorage.removeItem(this.env.CONNECTED_USER);
+        localStorage.removeItem(this.env.TOKEN_KEY);
+        localStorage.removeItem(this.env.TOKEN_TYPE);
+        localStorage.removeItem('role');
+
+    }
 }

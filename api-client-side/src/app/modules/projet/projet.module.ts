@@ -46,6 +46,9 @@ import { ProjetEtapeLivrableListComponent } from './projet-etape-livrable-list/p
 import { ProjetEtapeLivrableCreateComponent } from './projet-etape-livrable-create/projet-etape-livrable-create.component';
 import { ProjetEtapeObjectifComponent } from './projet-etape-objectif/projet-etape-objectif.component';
 import { ProjetEtapeObjectifCreateComponent } from './projet-etape-objectif-create/projet-etape-objectif-create.component';
+import { ProjetObjectifShowComponent } from './projet-objectif-show/projet-objectif-show.component';
+import { ProjetObjectifComponent } from './projet-objectif/projet-objectif.component';
+import { ProjetObjectifCreateComponent } from './projet-objectif-create/projet-objectif-create.component';
 
 @NgModule({
     declarations: [
@@ -84,7 +87,10 @@ import { ProjetEtapeObjectifCreateComponent } from './projet-etape-objectif-crea
         ProjetEtapeLivrableListComponent,
         ProjetEtapeLivrableCreateComponent,
         ProjetEtapeObjectifComponent,
-        ProjetEtapeObjectifCreateComponent
+        ProjetEtapeObjectifCreateComponent,
+        ProjetObjectifShowComponent,
+        ProjetObjectifComponent,
+        ProjetObjectifCreateComponent
     ],
     imports: [
         CommonModule, 

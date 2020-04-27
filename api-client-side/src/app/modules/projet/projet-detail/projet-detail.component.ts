@@ -90,4 +90,11 @@ export class ProjetDetailComponent implements OnInit {
     goToCaracteristique(slug: string){
         this.router.navigate(['projets/caracterisque/', slug]);
     }
+
+
+    goToObjectif(slug: string){
+        this.router.navigate(['projets/objectif/', slug]);
+    }
+
+
 }
