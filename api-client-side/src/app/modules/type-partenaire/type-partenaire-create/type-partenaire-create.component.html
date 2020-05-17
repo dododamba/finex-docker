@@ -1,4 +1,4 @@
-<div class="content with-padding padding-bottom-10">
+<div class="jumbotron content with-padding padding-bottom-10">
 
     <!-- Section -->
     <div class="add-listing-section">
@@ -8,6 +8,7 @@
             <h4 class="wither"><i class="sl sl-icon-doc"></i> Enregistrement <a class="button pull-right"
                                                                                 routerLink='/type-partenaire/list'><i
                     class="fa fa-list"></i> List </a></h4>
+                    <br><br>
 
         </div>
         <form (ngSubmit)="create()" [formGroup]="fGroup">
@@ -45,7 +46,7 @@
 
             <div class="col-xs-12">
                 <div *ngIf="!fGroup.invalid" class="comment-btn">
-                    <button class="btn-blue btn-red" href="#" type="submit">Enregistrer</button>
+                    <button class="btn btn-success btn-red" href="#" type="submit">Enregistrer</button>
                 </div>
             </div>
 

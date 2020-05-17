@@ -4,7 +4,7 @@
     <div>
         <div class="dashboard-list-box">
             <div class="headline">
-                <h2> Caracteristiques Techniques  <a class="button pull-right"
+                <h2> Objectifs  <a class="button pull-right"
                                                                          routerLink='/projets/{{slug}}'><i
                         class="fa fa-list"></i> << Retour </a></h2>
             </div>
@@ -88,21 +88,23 @@
             <div class="container table-box">
                 <div class="headline"><i class="fa fa-list"></i> <strong class="text-success"> Caracteristiques Techniques
                     :</strong>
-                    <button (click)="goToAddPartenaire()" class="button pull-right"><i class="fa fa-plus"></i> Ajouter
+                    <button (click)='addObj()' class="button pull-right"><i class="fa fa-plus"></i> Ajouter
                     </button>
                 </div>
                 <table class="basic-table booking-table">
                     <thead>
                     <tr>
-                        <th>Partenaire</th>
-                        <th>Type de partenaire</th>
+                        <th>Libellé</th>
+                        <th>Indicateur</th>
+                        <th>Contenu</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let item of projet.partenaires">
-                        <td>{{ item.nom }}</td>
-                        <td>{{ item.typePartenaire.libelle }}</td>
+                    <tr *ngFor="let item of projet.objectifs">
+                        <td>{{ item.libelle }}</td>
+                        <td>{{ item.indicateur }}</td>
+                        <td>{{ item.contenu }}</td>
 
                         <td class="btn-group">
                             <button (click)="show(item.slug)" class="btn btn-xs btn-info"><i

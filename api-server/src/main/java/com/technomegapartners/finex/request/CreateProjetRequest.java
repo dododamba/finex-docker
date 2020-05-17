@@ -11,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.technomegapartners.finex.model.CatarteristiqueTechnique;
 import com.technomegapartners.finex.model.Region;
+import com.technomegapartners.finex.model.Objectif;
 
 /**
  * @author dominiquedamba
@@ -37,6 +38,8 @@ public class CreateProjetRequest {
 	private String secteur;
 	private String controllleur;
 	
+	private Objectif[] objectifs;
+
 	private String maitreDeouvreDelegue;
 	private String maitreDeouvre;
 	private String[] region;
@@ -185,7 +188,13 @@ public class CreateProjetRequest {
 		this.typeMarche = typeMarche;
 	}
 	
-	
+	public Objectif[] getObjectifs() {
+		return objectifs;
+	}
+
+	public void setObjectifs(Objectif[] objectifs) {
+		this.objectifs = objectifs;
+	}
 	
 
 }

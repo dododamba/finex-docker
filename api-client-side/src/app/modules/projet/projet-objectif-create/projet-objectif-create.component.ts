@@ -4,17 +4,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProjetService } from '../projet.service';
 import Swal from 'sweetalert2';
 
-@Component({
-  selector: 'app-projet-carateristique-create',
-  templateUrl: './projet-carateristique-create.component.html',
-  styleUrls: ['./projet-carateristique-create.component.scss']
-})
-export class ProjetCarateristiqueCreateComponent implements OnInit {
 
-  public caracteristiqueTechniques: any = [];
-  public natures: string[] = [
-    'date', 'numerique', 'décimale', 'chaine de charactère'
-  ];
+@Component({
+  selector: 'app-projet-objectif-create',
+  templateUrl: './projet-objectif-create.component.html',
+  styleUrls: ['./projet-objectif-create.component.scss']
+})
+export class ProjetObjectifCreateComponent implements OnInit {
+
+  public objectifs: any = [];
+
   fGroup: FormGroup;
   slug: string;
   routeParams: Params;
@@ -34,12 +33,9 @@ export class ProjetCarateristiqueCreateComponent implements OnInit {
     this.initForm();
   }
 
-  isDate(assertion: string) {
-    return assertion === 'date' ? true : false;
-}
-
+  
 goBack(){
-  this.router.navigateByUrl('projets/caracterisque/' + this.slug);
+  this.router.navigateByUrl('projets/objectif/' + this.slug);
 }
 
 
@@ -52,21 +48,22 @@ getSlug() {
   });
 }
 
-  addCaracTechnique(libelleD: string, valeurD: any, natureD: string) {
-    const caracteristiqueTechniques = {
+addObjectif(libelleD: string, indicateur: any, contenuD: string) {
+    const objectifs = {
         libelle: libelleD,
-        valeur: valeurD,
-        nature: natureD
+        indicateur: indicateur,
+        contenu: contenuD
     };
-    this.caracteristiqueTechniques.push(caracteristiqueTechniques);
+    this.objectifs.push(objectifs);
+    console.log(this.objectifs)
   }
 
   initForm() {
     this.fGroup = this.fb.group(
         {
         
-            valeur: [''],
-            nature: [''],
+            indicateur: [''],
+            contenu: [''],
             libelle: ['']
         }
     );
@@ -75,10 +72,10 @@ getSlug() {
 submit(){
    const _data  = {
      projetSlug : this.slug,
-     caracteristiqueTechniques: this.caracteristiqueTechniques
+     objectifs: this.objectifs
    }
 
-   this.service.addCaracteristiques(_data).subscribe(
+   this.service.addObjectifs(_data).subscribe(
       (response : any) => {
          if(response.status){
             Swal.fire('Enregistrement',''+response.message,'success')

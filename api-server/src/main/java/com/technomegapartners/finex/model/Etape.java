@@ -34,14 +34,16 @@ public class Etape implements Serializable {
     private Date dateDebut;
     private Date dateFin;
     private String slug;
-    @Column(length = 1000)
-    private String livrable;
+ 
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "etape")
     private Set<Tache> taches = new HashSet<>();
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "etape")
     private Set<ProjetControlleur> constrolleurs = new HashSet<>();
     
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "etape")
+    private Set<Livrable> livrables = new HashSet<>();
+
     @ManyToOne
     @JsonIgnore
     private Projet projet;
@@ -183,6 +185,26 @@ public class Etape implements Serializable {
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
+
+
+
+    /**
+	 * @return the livrables
+	 */
+	public Set<Livrable> getLivrables() {
+		return livrables;
+	}
+
+	/**
+	 * @param livrables the livrables to set
+	 */
+	public void setLivrables(Set<Livrable> livrables) {
+		this.livrables = livrables;
+    }
+    
+
+
+
 
 	/**
 	 * @return the constrolleurs

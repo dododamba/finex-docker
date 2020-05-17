@@ -24,6 +24,12 @@ import { ProjetPartenaireCreateComponent } from './projet-partenaire-create/proj
 import { ProjetEntrepriseDetailComponent } from './projet-entreprise-detail/projet-entreprise-detail.component';
 import {ProjetControleComponent} from './projet-controle/projet-controle.component';
 import {ProjetControleCreateComponent} from './projet-controle-create/projet-controle-create.component';
+import { ProjetCarateristiqueComponent } from './projet-carateristique/projet-carateristique.component';
+import { ProjetCarateristiqueCreateComponent } from './projet-carateristique-create/projet-carateristique-create.component';
+import { ProjetCarateristiqueShowComponent } from './projet-carateristique-show/projet-carateristique-show.component';
+import { ProjetObjectifComponent } from './projet-objectif/projet-objectif.component';
+import { ProjetObjectifCreateComponent } from './projet-objectif-create/projet-objectif-create.component';
+import { ProjetObjectifShowComponent } from './projet-objectif-show/projet-objectif-show.component';
 
 export const projetRoutes: Routes = [
     { path: '',
@@ -49,7 +55,14 @@ export const projetRoutes: Routes = [
       {path: 'maitredoeuvre/create/:slug', component: ProjetCreateMaitredoeuvreComponent},
       {path: 'maitredoeuvre/:slug', component: ProjetMaitreDoeuvreComponent},
       {path: 'entreprise/:slug/show/:detail', component: ProjetEntrepriseDetailComponent},
-      //{path: 'caracterisque/:slug', component: },
+      {path: 'caracterisque/:slug', component: ProjetCarateristiqueComponent},
+      {path: 'caracterisque/create/:slug', component: ProjetCarateristiqueCreateComponent},
+      {path: 'caracterisque/:slug/show/:detail', component: ProjetCarateristiqueShowComponent},
+
+      {path: 'objectif/:slug', component: ProjetObjectifComponent},
+      {path: 'objectif/create/:slug', component: ProjetObjectifCreateComponent},
+      {path: 'objectif/:slug/show/:detail', component: ProjetObjectifShowComponent},
+
       {path: 'controle/:slug', component: ProjetControleComponent},
       {path: 'controle/create/:slug', component: ProjetControleCreateComponent},
       {path: 'mes-soustraittants/:slug', component: MyProjetComponent},

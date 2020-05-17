@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {ProjetService} from '../projet.service';
 import {IProjet} from '../projet';
@@ -6,11 +6,12 @@ import {IFinancement} from '../../financement/financement';
 
 
 @Component({
-  selector: 'app-projet-carateristique',
-  templateUrl: './projet-carateristique.component.html',
-  styleUrls: ['./projet-carateristique.component.scss']
+  selector: 'app-projet-objectif',
+  templateUrl: './projet-objectif.component.html',
+  styleUrls: ['./projet-objectif.component.scss']
 })
-export class ProjetCarateristiqueComponent implements OnInit {
+export class ProjetObjectifComponent implements OnInit {
+
   slug: string;
   routeParams: Params;
   projet: IProjet;
@@ -36,13 +37,13 @@ export class ProjetCarateristiqueComponent implements OnInit {
   }
 
 
-  goToCara() {
-      this.router.navigate(['projets/caracterisque/create/', this.slug]);
+  addObj() {
+      this.router.navigate(['projets/objectif/create/', this.slug]);
 
   }
 
   show(slug:string) {
-      this.router.navigate(['projets/caracterisque/',this.slug,'/show/',slug]);
+      this.router.navigate(['projets/objectif/',this.slug,'/show/',slug]);
 
   }
 

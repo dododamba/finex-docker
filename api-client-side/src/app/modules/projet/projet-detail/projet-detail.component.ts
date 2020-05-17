@@ -86,4 +86,15 @@ export class ProjetDetailComponent implements OnInit {
     goToControle(slug: string) {
         this.router.navigate(['projets/controle/', slug]);
     }
+
+    goToCaracteristique(slug: string){
+        this.router.navigate(['projets/caracterisque/', slug]);
+    }
+
+
+    goToObjectif(slug: string){
+        this.router.navigate(['projets/objectif/', slug]);
+    }
+
+
 }

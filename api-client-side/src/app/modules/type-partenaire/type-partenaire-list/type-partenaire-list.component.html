@@ -1,7 +1,7 @@
 <div class="col-lg-12 col-md-12 col-xs-12">
     <div class="dashboard-list-box">
         <div class="headline"><i class="fa fa-list"></i> Liste <a class="button pull-right"
-                                                                  routerLink='/financements/create'><i
+                                                                  routerLink='/type-partenaire/create'><i
                 class="fa fa-plus"></i> Ajouter </a></div>
         <div class="table-box">
             <table class="basic-table booking-table">
@@ -46,7 +46,7 @@
                 <li *ngIf="!last"><a (click)="nextPage()"><i class="sl sl-icon-arrow-right"></i></a></li>
             </ul>
         </nav>
-        <button class="button preview pull-left">{{numberOfElements}}/ {{totalElements}} Financements</button>
+        <button class="button preview pull-left">{{numberOfElements}}/ {{totalElements}} Types</button>
         <button class="button  pull-right">Imprimer</button>
     </div>
 </div>

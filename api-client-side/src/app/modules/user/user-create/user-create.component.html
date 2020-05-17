@@ -2,7 +2,7 @@
     <p>{{ successMessage }}</p>
 </div>
 
-<div class="content with-padding padding-bottom-10">
+<div class="content with-padding padding-bottom-10 jumbotron">
     <form (ngSubmit)="create(fGroup.value)" [formGroup]="fGroup">
 
         <!-- Section -->
@@ -13,6 +13,7 @@
                 <h4 class="wither"><i class="sl sl-icon-doc"></i> Enregistrement <a class="button pull-right"
                                                                                     routerLink='/user/list'><i
                         class="fa fa-list"></i> List </a></h4>
+                        <br><br>
 
             </div>
 

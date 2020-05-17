@@ -1,7 +1,9 @@
 <div class="col-lg-12 col-md-12 col-xs-12">
     <div class="dashboard-list-box">
+        <br><br>
         <h4 class="gray"><i class="fa fa-list"></i> Liste <a class="button pull-right" routerLink='/user/create'><i
                 class="fa fa-plus"></i> Ajouter </a></h4>
+                <br><br>
         <div class="table-box">
             <table class="basic-table booking-table">
                 <thead>
@@ -18,7 +20,7 @@
                     <td>{{ item.id }}</td>
                     <td>{{ item.username }}</td>
                     <td>{{ item.email }}</td>
-                    <td>{{ item.role }}</td>
+                    <td>{{ item.roles[0].name }}</td>
                     <td class="btn-group">
                         <button (click)="show(item.slug)" class="btn btn-xs btn-info"><i class="icon-feather-eye"></i>
                         </button>&nbsp;

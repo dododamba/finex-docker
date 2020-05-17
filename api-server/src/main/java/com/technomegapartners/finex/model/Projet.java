@@ -64,6 +64,11 @@ public class Projet implements Serializable {
 	private Set<Financement> financements = new HashSet<>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "projet")
+	private Set<Objectif> objectifs = new HashSet<>();
+
+
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "projet")
     private  Set<Etape> etapes = new HashSet<>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "projet")
@@ -298,6 +303,29 @@ public class Projet implements Serializable {
 	public void setCatarteristiqueTechniques(Set<CatarteristiqueTechnique> catarteristiqueTechniques) {
 		this.catarteristiqueTechniques = catarteristiqueTechniques;
 	}
+
+
+
+
+	/**
+	 * @return the objectifs
+	 */
+	public Set<Objectif> getObjectifs() {
+		return objectifs;
+	}
+
+	/**
+	 * @param objectifs the objectifs to set
+	 */
+	public void setObjectifs(Set<Objectif> objectifs) {
+		this.objectifs = objectifs;
+	}
+
+
+
+
+
+
 
 	/**
 	 * @return the Secteur

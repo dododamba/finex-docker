@@ -23,39 +23,42 @@
                     <div class="add-listing-section">
 
                         <!-- Headline -->
-                        
+                        <div class="add-listing-headline">
+                            <h3><i class="sl sl-icon-doc"></i> Objectifs du projet </h3>
+                        </div>
+    
                         <div class="row ">
     
     
-                            <div class="col-xl-5">
+                            <div class="col-xl-4">
                                 <label>Libéllé <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
                                 <input class="search-field" formControlName="libelle" type="text">
                             </div>
     
-                            <div class="col-xl-2">
-                                <label>Nature <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
-                                <select class="chosen-select-no-single" formControlName="nature">
-                                    <option disabled>Selectioner une valeur</option>
-                                    <option *ngFor="let item of natures" value="{{item}}"> {{ item }}
-                                </select>
+                            <div class="col-xl-4">
+                                <label>Indicateur <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                <input class="search-field" formControlName="indicateur" type="text">
                             </div>
     
-                            <div *ngIf="isDate(fGroup.value.nature);" class="col-xl-5">
-                                <label>Valeur <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
-                                <input class="search-field" formControlName="valeur" type="date">
+    
+                            <div class="col-xl-4">
+                                <label>Contenu <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
+                                <input class="search-field" formControlName="contenu" type="text">
+    
                             </div>
-                            <div *ngIf="!isDate(fGroup.value.nature);" class="col-xl-5">
-                                <label>Valeur <i class="text-danger glyphicon glyphicon-asterisk"></i></label>
-                                <input class="search-field" formControlName="valeur" type="text">
-                            </div>
+    
+                        
+                            
+                          
                         </div>
     
-                        <br>
-                        <button (click)="addCaracTechnique(fGroup.value.libelle,fGroup.value.valeur,fGroup.value.nature)"
-                                class="button"
-                                type="button">Ajouter
-                        </button>
-                        <br><br><br><br>
+    
+                            <button (click)="addObjectif(fGroup.value.libelle,fGroup.value.indicateur,fGroup.value.contenu)"
+                            class="button"
+                            type="button">Ajouter
+                           </button>
+                       
+                        <br><br>
     
     
     
@@ -66,15 +69,15 @@
                                 <thead>
                                 <tr>
                                     <th>Libellé</th>
-                                    <th>Nature</th>
-                                    <th>Valeur</th>
+                                    <th>Contenu</th>
+                                    <th>Indicateur</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr *ngFor="let item of caracteristiqueTechniques">
+                                <tr *ngFor="let item of objectifs">
                                     <td>{{ item.libelle }}</td>
-                                    <td>{{ item.nature }}</td>
-                                    <td>{{ item.valeur }}</td>
+                                    <td>{{ item.contenu }}</td>
+                                    <td>{{ item.indicateur }}</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -82,7 +85,6 @@
                         </div>           
                         <br>
                     </div>
-
 
                     <div>
 
