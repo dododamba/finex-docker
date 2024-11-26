@@ -24,7 +24,7 @@
     "angular-ng-autocomplete": "^1.1.17",
     "bootstrap": "^4.4.1",
     "bootstrap-scss": "^4.4.1",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "moment": "2.24.0",
     "mydatepicker": "2.6.6",
     "ng2-charts": "^2.3.0",
